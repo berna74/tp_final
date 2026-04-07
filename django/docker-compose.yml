@@ -1,0 +1,17 @@
+
+services:
+  backend:
+    image: backend:0.1
+    build:
+      context: ./config
+      dockerfile: django-image/Dockerfile
+    volumes:
+      - ./src/dyango:/usr/src/app:delegated
+    ports:
+      - 8000:8000
+    networks:
+      - red
+    depends_on: {}
+
+networks:
+  red:
