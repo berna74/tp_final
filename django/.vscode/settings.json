@@ -2,11 +2,15 @@
     "sqltools.useNodeRuntime": true,
     "sqltools.connections": [
         {
-            "name": "Django SQLite",
-            "dialect": "SQLite",
-            "database": "/home/martin/app/django/src/dyango/db.sqlite3",
-            "previewLimit": 100,
-            "driver": "SQLite"
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 15432,
+            "driver": "PostgreSQL",
+            "name": "dbpostgres",
+            "database": "pwdvideo",
+            "username": "uservideo",
+            "password": "dbvideo"
         }
     ]
 }
