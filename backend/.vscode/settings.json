@@ -1,0 +1,16 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 15432,
+            "driver": "PostgreSQL",
+            "name": "dbpostgres",
+            "database": "pwdvideo",
+            "username": "uservideo",
+            "password": "dbvideo"
+        }
+    ]
+}
