@@ -1,126 +1,120 @@
-import json
-
-from django.db import DatabaseError
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.db import DatabaseError, IntegrityError
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Socio
+from .serializers import (
+    SocioSerializer,
+    SociosListQuerySerializer,
+    SociosPaginatedResponseSerializer,
+)
 
 
 PAGE_SIZE = 10
 
 
-def parse_json(request):
-    try:
-        return json.loads(request.body or "{}")
-    except (TypeError, ValueError):
-        return None
-
-
-def response_item(data, status=200):
-    response = JsonResponse(data, status=status, safe=not isinstance(data, list))
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-    response["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    return response
-
-
-def response_paginated(items, page=1, page_size=PAGE_SIZE):
+def paginated_payload(items, page=1, page_size=PAGE_SIZE):
     total_count = len(items)
     total_pages = max((total_count + page_size - 1) // page_size, 1)
     page = max(min(page, total_pages), 1)
     start = (page - 1) * page_size
     end = start + page_size
-    return response_item(
-        {
-            "items": items[start:end],
-            "total_pages": total_pages,
-            "total_count": total_count,
-            "page_size": page_size,
-        }
-    )
+    payload = {
+        "items": items[start:end],
+        "total_pages": total_pages,
+        "total_count": total_count,
+        "page_size": page_size,
+    }
+    serializer = SociosPaginatedResponseSerializer(instance=payload)
+    return serializer.data
 
 
-def serialize_socio(socio):
+def validation_error_payload(serializer):
     return {
-        "id": socio.id,
-        "nombre": socio.nombre,
-        "apellido": socio.apellido,
-        "dni": socio.dni,
-        "email": socio.email,
-        "telefono": socio.telefono,
-        "fecha_inscripcion": socio.fecha_inscripcion,
-        "profesor_id": socio.profesor_id,
-        "registra_deuda": socio.registra_deuda,
-        "categorias": [],
+        "mensaje": "Datos invalidos",
+        "errores": serializer.errors,
     }
 
 
-@csrf_exempt
-def socios_collection(request):
-    if request.method == "OPTIONS":
-        return response_item({}, status=204)
+class CorsAPIView(APIView):
+    def finalize_response(self, request, response, *args, **kwargs):
+        response = super().finalize_response(request, response, *args, **kwargs)
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+        response["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        return response
 
-    if request.method == "GET":
-        page = int(request.GET.get("page", 1))
+
+class SociosCollectionAPIView(CorsAPIView):
+    def get(self, request):
+        query_serializer = SociosListQuerySerializer(data=request.query_params)
+        if not query_serializer.is_valid():
+            return Response(
+                validation_error_payload(query_serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        page = query_serializer.validated_data["page"]
+
         try:
             socios = Socio.objects.all().order_by("id")
-            return response_paginated([serialize_socio(socio) for socio in socios], page=page)
+            data = SocioSerializer(socios, many=True).data
+            return Response(paginated_payload(data, page=page))
         except DatabaseError:
-            return response_paginated([], page=page)
+            return Response(paginated_payload([], page=page))
 
-    if request.method == "POST":
-        data = parse_json(request)
-        if data is None:
-            return response_item({"mensaje": "JSON invalido"}, status=400)
+    def post(self, request):
+        serializer = SocioSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        socio = Socio.objects.create(
-            nombre=data.get("nombre", ""),
-            apellido=data.get("apellido", ""),
-            dni=data.get("dni", ""),
-            email=data.get("email", ""),
-            telefono=data.get("telefono", ""),
-            fecha_inscripcion=data.get("fecha_inscripcion"),
-            profesor_id=data.get("profesor_id"),
-            registra_deuda=data.get("registra_deuda", False),
-        )
-        return response_item(serialize_socio(socio), status=201)
+        try:
+            socio = serializer.save()
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
 
-    return response_item({"mensaje": "Metodo no permitido"}, status=405)
+        return Response(SocioSerializer(socio).data, status=status.HTTP_201_CREATED)
 
 
-@csrf_exempt
-def socio_detail(request, pk):
-    if request.method == "OPTIONS":
-        return response_item({}, status=204)
+class SocioDetailAPIView(CorsAPIView):
+    def get_object(self, pk):
+        try:
+            return Socio.objects.get(pk=pk)
+        except Socio.DoesNotExist:
+            return None
 
-    try:
-        socio = Socio.objects.get(pk=pk)
-    except Socio.DoesNotExist:
-        return response_item({"mensaje": "Socio no encontrado"}, status=404)
+    def get(self, request, pk):
+        socio = self.get_object(pk)
+        if socio is None:
+            return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+        return Response(SocioSerializer(socio).data)
 
-    if request.method == "GET":
-        return response_item(serialize_socio(socio))
+    def put(self, request, pk):
+        socio = self.get_object(pk)
+        if socio is None:
+            return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == "PUT":
-        data = parse_json(request)
-        if data is None:
-            return response_item({"mensaje": "JSON invalido"}, status=400)
+        serializer = SocioSerializer(socio, data=request.data, partial=True)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        socio.nombre = data.get("nombre", socio.nombre)
-        socio.apellido = data.get("apellido", socio.apellido)
-        socio.dni = data.get("dni", socio.dni)
-        socio.email = data.get("email", socio.email)
-        socio.telefono = data.get("telefono", socio.telefono)
-        socio.fecha_inscripcion = data.get("fecha_inscripcion", socio.fecha_inscripcion)
-        socio.profesor_id = data.get("profesor_id", socio.profesor_id)
-        socio.registra_deuda = data.get("registra_deuda", socio.registra_deuda)
-        socio.save()
+        try:
+            socio = serializer.save()
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
 
-        return response_item(serialize_socio(socio))
+        return Response(SocioSerializer(socio).data)
 
-    if request.method == "DELETE":
+    def delete(self, request, pk):
+        socio = self.get_object(pk)
+        if socio is None:
+            return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
         socio.delete()
-        return response_item({"mensaje": "Socio eliminado"})
-
-    return response_item({"mensaje": "Metodo no permitido"}, status=405)
+        return Response({"mensaje": "Socio eliminado"})

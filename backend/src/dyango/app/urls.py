@@ -16,10 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from aulas import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aulas/', include(urls)),
     path('api/', include('socios.urls')),
 ]

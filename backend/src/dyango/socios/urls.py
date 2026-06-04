@@ -1,9 +1,9 @@
 from django.urls import re_path
 
-from .views import socio_detail, socios_collection
+from .views import SocioDetailAPIView, SociosCollectionAPIView
 
 
 urlpatterns = [
-    re_path(r"^socios/?$", socios_collection),
-    re_path(r"^socios/(?P<pk>\d+)/?$", socio_detail),
+    re_path(r"^socios/?$", SociosCollectionAPIView.as_view()),
+    re_path(r"^socios/(?P<pk>\d+)/?$", SocioDetailAPIView.as_view()),
 ]
