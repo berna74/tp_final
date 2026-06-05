@@ -13,7 +13,6 @@ class Socio(models.Model):
 
     class Meta:
         db_table = "SOCIOS"
-        managed = False
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"

@@ -7,7 +7,7 @@
             "server": "localhost",
             "port": 15432,
             "driver": "PostgreSQL",
-            "name": "dbpostgres",
+            "name": "tp-final-postgres",
             "database": "pwdvideo",
             "username": "uservideo",
             "password": "dbvideo"
