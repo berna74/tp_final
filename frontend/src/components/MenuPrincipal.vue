@@ -15,15 +15,7 @@
       <RouterLink :to="{ name: 'profesores' }" @click="closeMenu">Profesores</RouterLink>
       <RouterLink :to="{ name: 'pagos' }" @click="closeMenu">Pagos</RouterLink>
       <RouterLink :to="{ name: 'pelotitas' }" @click="closeMenu">Pelotitas</RouterLink>
-
-      <div class="social-links">
-        <a href="https://www.facebook.com/paletasoldemayo" target="_blank" rel="noopener noreferrer" title="Facebook">
-          <Icon icon="mdi:facebook" width="24" height="24" />
-        </a>
-        <a href="https://www.instagram.com/paletasoldemayo" target="_blank" rel="noopener noreferrer" title="Instagram">
-          <Icon icon="mdi:instagram" width="24" height="24" />
-        </a>
-      </div>
+      <EnlacesRedesSociales class="social-links-container" />
     </div>
   </nav>
 </template>
@@ -31,6 +23,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import EnlacesRedesSociales from '@/components/EnlacesRedesSociales.vue'
 
 const menuOpen = ref(false)
 
@@ -108,19 +101,9 @@ nav {
   font-weight: 600;
 }
 
-.social-links {
+.social-links-container {
   margin-left: auto;
   display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: #ffffff;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #00cdff;
 }
 
 @media (max-width: 768px) {
@@ -171,7 +154,7 @@ nav {
     border-bottom: none;
   }
 
-  .social-links {
+  .social-links-container {
     margin: 1rem 0 0;
     padding: 1rem 1.5rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
