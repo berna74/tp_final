@@ -1,33 +1,10 @@
 from django.db import DatabaseError, IntegrityError
-from rest_framework import status
+from django.http import Http404
+from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from .models import Socio
-from .serializers import (
-    SocioSerializer,
-    SociosListQuerySerializer,
-    SociosPaginatedResponseSerializer,
-)
-
-
-PAGE_SIZE = 10
-
-
-def paginated_payload(items, page=1, page_size=PAGE_SIZE):
-    total_count = len(items)
-    total_pages = max((total_count + page_size - 1) // page_size, 1)
-    page = max(min(page, total_pages), 1)
-    start = (page - 1) * page_size
-    end = start + page_size
-    payload = {
-        "items": items[start:end],
-        "total_pages": total_pages,
-        "total_count": total_count,
-        "page_size": page_size,
-    }
-    serializer = SociosPaginatedResponseSerializer(instance=payload)
-    return serializer.data
+from .serializers import SocioSerializer
 
 
 def validation_error_payload(serializer):
@@ -37,34 +14,20 @@ def validation_error_payload(serializer):
     }
 
 
-class CorsAPIView(APIView):
-    def finalize_response(self, request, response, *args, **kwargs):
-        response = super().finalize_response(request, response, *args, **kwargs)
-        response["Access-Control-Allow-Origin"] = "*"
-        response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-        response["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-        return response
+class SocioList(generics.ListCreateAPIView):
+    queryset = Socio.objects.all()
+    serializer_class = SocioSerializer
 
-
-class SociosCollectionAPIView(CorsAPIView):
-    def get(self, request):
-        query_serializer = SociosListQuerySerializer(data=request.query_params)
-        if not query_serializer.is_valid():
-            return Response(
-                validation_error_payload(query_serializer),
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-        page = query_serializer.validated_data["page"]
-
+    def list(self, request, *args, **kwargs):
         try:
-            socios = Socio.objects.all().order_by("id")
-            data = SocioSerializer(socios, many=True).data
-            return Response(paginated_payload(data, page=page))
+            queryset = self.filter_queryset(self.get_queryset())
+            data = self.get_serializer(queryset, many=True).data
+            return Response(data)
         except DatabaseError:
-            return Response(paginated_payload([], page=page))
+            return Response([])
 
-    def post(self, request):
-        serializer = SocioSerializer(data=request.data)
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
         if not serializer.is_valid():
             return Response(
                 validation_error_payload(serializer),
@@ -72,32 +35,41 @@ class SociosCollectionAPIView(CorsAPIView):
             )
 
         try:
-            socio = serializer.save()
+            self.perform_create(serializer)
         except IntegrityError as exc:
             return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response(SocioSerializer(socio).data, status=status.HTTP_201_CREATED)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-class SocioDetailAPIView(CorsAPIView):
-    def get_object(self, pk):
+class SocioDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Socio.objects.all()
+    serializer_class = SocioSerializer
+
+    def _get_object_or_none(self):
         try:
-            return Socio.objects.get(pk=pk)
-        except Socio.DoesNotExist:
+            return self.get_object()
+        except Http404:
             return None
 
-    def get(self, request, pk):
-        socio = self.get_object(pk)
+    def put(self, request, *args, **kwargs):
+        kwargs["partial"] = True
+        return self.update(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        socio = self._get_object_or_none()
         if socio is None:
             return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
-        return Response(SocioSerializer(socio).data)
+        return Response(self.get_serializer(socio).data)
 
-    def put(self, request, pk):
-        socio = self.get_object(pk)
+    def update(self, request, *args, **kwargs):
+        socio = self._get_object_or_none()
         if socio is None:
             return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = SocioSerializer(socio, data=request.data, partial=True)
+        partial = kwargs.pop("partial", False)
+        serializer = self.get_serializer(socio, data=request.data, partial=partial)
         if not serializer.is_valid():
             return Response(
                 validation_error_payload(serializer),
@@ -105,16 +77,16 @@ class SocioDetailAPIView(CorsAPIView):
             )
 
         try:
-            socio = serializer.save()
+            self.perform_update(serializer)
         except IntegrityError as exc:
             return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response(SocioSerializer(socio).data)
+        return Response(serializer.data)
 
-    def delete(self, request, pk):
-        socio = self.get_object(pk)
+    def destroy(self, request, *args, **kwargs):
+        socio = self._get_object_or_none()
         if socio is None:
             return Response({"mensaje": "Socio no encontrado"}, status=status.HTTP_404_NOT_FOUND)
 
-        socio.delete()
+        self.perform_destroy(socio)
         return Response({"mensaje": "Socio eliminado"})

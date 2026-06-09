@@ -19,10 +19,19 @@ export const useSociosStore = defineStore('socios', () => {
     try {
       currentPage.value = page
       const response = await ApiService.get(`/socios/?page=${page}`)
-      socios.value = response.data.items || []
-      totalPages.value = response.data.total_pages || 1
-      totalCount.value = response.data.total_count || 0
-      pageSize.value = response.data.page_size || 10
+      const data = response.data
+
+      if (Array.isArray(data)) {
+        socios.value = data
+        totalCount.value = data.length
+        pageSize.value = data.length || 10
+        totalPages.value = 1
+      } else {
+        socios.value = data.items || []
+        totalPages.value = data.total_pages || 1
+        totalCount.value = data.total_count || 0
+        pageSize.value = data.page_size || 10
+      }
     } catch (err: any) {
       error.value = err.message || 'Error al cargar los socios'
     } finally {
