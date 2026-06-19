@@ -2,7 +2,7 @@
   <div class="pagos-list">
     <div class="list-header">
       <h2>Registro de Pagos</h2>
-      <button @click="handleCreate" class="btn-create" :disabled="loading" :class="{ 'is-loading': loading }">
+      <button v-if="authStore.puedeEscribir" @click="handleCreate" class="btn-create" :disabled="loading" :class="{ 'is-loading': loading }">
         <Icon icon="mdi:plus" width="20" height="20" />
         {{ loading ? 'Cargando...' : 'Registrar Pago' }}
       </button>
@@ -47,10 +47,10 @@
               <button @click="$emit('show', pago.id)" class="btn-icon" title="Ver">
                 <Icon icon="mdi:eye" width="18" height="18" />
               </button>
-              <button @click="$emit('edit', pago.id)" class="btn-icon" title="Editar">
+              <button v-if="authStore.puedeEscribir" @click="$emit('edit', pago.id)" class="btn-icon" title="Editar">
                 <Icon icon="mdi:pencil" width="18" height="18" />
               </button>
-              <button @click="handleDelete(pago.id)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="authStore.puedeEscribir" @click="handleDelete(pago.id)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -78,9 +78,11 @@ import { Icon } from '@iconify/vue'
 import { usePagosStore } from '@/stores/pagos'
 import { storeToRefs } from 'pinia'
 import type { Pago } from '@/interfaces/Pago'
+import { useAuthStore } from '@/stores/auth'
 
 const emit = defineEmits(['create', 'show', 'edit'])
 const pagosStore = usePagosStore()
+const authStore = useAuthStore()
 const { pagos, loading, error, currentPage, totalPages } = storeToRefs(pagosStore)
 
 onMounted(() => {
@@ -125,6 +127,10 @@ function getBeneficiario(pago: Pago): string {
 }
 
 async function handleDelete(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('¿Está seguro de eliminar este pago?')) {
     try {
       await pagosStore.deletePago(id)
@@ -141,7 +147,7 @@ function goToPage(page: number) {
 }
 
 function handleCreate() {
-  if (!loading.value) {
+  if (authStore.puedeEscribir && !loading.value) {
     emit('create')
   }
 }

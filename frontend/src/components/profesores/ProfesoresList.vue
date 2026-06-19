@@ -2,7 +2,7 @@
   <div class="profesores-list">
     <div class="header">
       <h2>Lista de Profesores</h2>
-      <button @click="showCreateForm = true" class="btn-primary">
+      <button v-if="authStore.puedeEscribir" @click="showCreateForm = true" class="btn-primary">
         <Icon icon="mdi:plus" width="20" height="20" />
         Nuevo Profesor
       </button>
@@ -40,10 +40,10 @@
               <button v-if="profesor.id" @click="viewProfesor(profesor.id)" class="btn-icon" title="Ver">
                 <Icon icon="mdi:eye" width="18" height="18" />
               </button>
-              <button v-if="profesor.id" @click="editProfesor(profesor.id)" class="btn-icon" title="Editar">
+              <button v-if="profesor.id && authStore.puedeEscribir" @click="editProfesor(profesor.id)" class="btn-icon" title="Editar">
                 <Icon icon="mdi:pencil" width="18" height="18" />
               </button>
-              <button v-if="profesor.id" @click="confirmDelete(profesor.id)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="profesor.id && authStore.puedeEscribir" @click="confirmDelete(profesor.id)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -72,11 +72,13 @@ import { computed, ref, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useProfesoresStore } from '@/stores/profesores'
 import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
 import ProfesoresCreate from './ProfesoresCreate.vue'
 import ProfesoresShow from './ProfesoresShow.vue'
 import ProfesoresUpdate from './ProfesoresUpdate.vue'
 
 const profesoresStore = useProfesoresStore()
+const authStore = useAuthStore()
 const { profesores, loading, error, currentPage, totalPages } = storeToRefs(profesoresStore)
 
 const profesoresOrdenados = computed(() => {
@@ -108,10 +110,18 @@ function viewProfesor(id: number) {
 }
 
 function editProfesor(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   editingProfesorId.value = id
 }
 
 function confirmDelete(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('¿Está seguro de que desea eliminar este profesor?')) {
     profesoresStore.deleteProfesor(id)
   }

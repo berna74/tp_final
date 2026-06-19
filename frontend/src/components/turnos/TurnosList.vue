@@ -2,7 +2,7 @@
   <div class="turnos-list">
     <div class="header">
       <h2>Lista de Turnos</h2>
-      <button @click="showCreateForm = true" class="btn-primary">
+      <button v-if="authStore.puedeEscribir" @click="showCreateForm = true" class="btn-primary">
         <Icon icon="mdi:plus" width="20" height="20" />
         Nuevo Turno
       </button>
@@ -40,10 +40,10 @@
               <button @click="viewTurno(turno.id)" class="btn-icon" title="Ver">
                 <Icon icon="mdi:eye" width="18" height="18" />
               </button>
-              <button @click="editTurno(turno.id)" class="btn-icon" title="Editar">
+              <button v-if="authStore.puedeEscribir" @click="editTurno(turno.id)" class="btn-icon" title="Editar">
                 <Icon icon="mdi:pencil" width="18" height="18" />
               </button>
-              <button @click="confirmDelete(turno.id)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="authStore.puedeEscribir" @click="confirmDelete(turno.id)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -71,11 +71,13 @@ import { ref, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useTurnosStore } from '@/stores/turnos'
 import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
 import TurnosCreate from './TurnosCreate.vue'
 import TurnosShow from './TurnosShow.vue'
 import TurnosUpdate from './TurnosUpdate.vue'
 
 const turnosStore = useTurnosStore()
+const authStore = useAuthStore()
 const { turnos, loading, error, currentPage, totalPages } = storeToRefs(turnosStore)
 
 const showCreateForm = ref(false)
@@ -96,6 +98,10 @@ function viewTurno(id: number) {
 }
 
 function editTurno(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   editingTurnoId.value = id
 }
 
@@ -106,6 +112,10 @@ function goToPage(page: number) {
 }
 
 async function confirmDelete(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('¿Está seguro de que desea eliminar este turno?')) {
     try {
       await turnosStore.deleteTurno(id)

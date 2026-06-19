@@ -3,9 +3,10 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import './assets/main.css'
 import App from './App.vue'
 import router from './router'
+import { setupAxiosInterceptors } from './plugins/axios'
+import { useAuthStore } from './stores/auth'
 
 // Iconify
 import { Icon } from '@iconify/vue'
@@ -41,9 +42,15 @@ addIcons(
 
 
 const app = createApp(App)
+const pinia = createPinia()
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
+
+setupAxiosInterceptors(pinia, router)
+
+const storeAuth = useAuthStore(pinia)
+storeAuth.restaurarSesionSiEsPosible()
 
 app.component("v-icon", OhVueIcon)
 app.component("Icon", Icon)

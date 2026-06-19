@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Categorias</h2>
-    <router-link :to="{ name: 'categorias_create' }"><button>Crear Categoria</button></router-link>
+    <router-link v-if="authStore.puedeEscribir" :to="{ name: 'categorias_create' }"><button>Crear Categoria</button></router-link>
 
     <div v-if="loading" class="alert alert-info mt-3">Cargando categorias...</div>
     <div v-else-if="error" class="alert alert-danger mt-3">{{ error }}</div>
@@ -28,12 +28,12 @@
                   <Icon icon="mdi:eye" width="18" height="18" />
                 </button>
               </router-link>
-              <router-link v-if="categoria.id" :to="{ name: 'categorias_edit', params: { id: categoria.id } }">
+              <router-link v-if="categoria.id && authStore.puedeEscribir" :to="{ name: 'categorias_edit', params: { id: categoria.id } }">
                 <button class="btn-icon" title="Editar">
                   <Icon icon="mdi:pencil" width="18" height="18" />
                 </button>
               </router-link>
-              <button @click.prevent="eliminar(categoria.id as number)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="authStore.puedeEscribir" @click.prevent="eliminar(categoria.id as number)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -61,8 +61,10 @@ import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { Icon } from '@iconify/vue'
 import { useCategoriasStore } from '@/stores/categorias'
+import { useAuthStore } from '@/stores/auth'
 
 const categoriasStore = useCategoriasStore()
+const authStore = useAuthStore()
 const { categorias, loading, error, currentPage, totalPages } = storeToRefs(categoriasStore)
 
 onMounted(async () => {
@@ -76,6 +78,10 @@ async function goToPage(page: number) {
 }
 
 async function eliminar(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('Estas seguro de eliminar la categoria ' + id + '?')) {
     if (confirm('Esta accion no se puede deshacer. Deseas continuar?')) {
       try {

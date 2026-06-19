@@ -2,7 +2,7 @@
   <div class="alumnos-list">
     <div class="list-header">
       <h2>Lista de Alumnos</h2>
-      <button @click="handleCreate" class="btn-create" :disabled="loading" :class="{ 'is-loading': loading }">
+      <button v-if="authStore.puedeEscribir" @click="handleCreate" class="btn-create" :disabled="loading" :class="{ 'is-loading': loading }">
         <Icon icon="mdi:plus" width="20" height="20" />
         {{ loading ? 'Cargando...' : 'Nuevo Alumno' }}
       </button>
@@ -45,10 +45,10 @@
               <button @click="$emit('show', alumno.id)" class="btn-icon" title="Ver">
                 <Icon icon="mdi:eye" width="18" height="18" />
               </button>
-              <button @click="$emit('edit', alumno.id)" class="btn-icon" title="Editar">
+              <button v-if="authStore.puedeEscribir" @click="$emit('edit', alumno.id)" class="btn-icon" title="Editar">
                 <Icon icon="mdi:pencil" width="18" height="18" />
               </button>
-              <button @click="handleDelete(alumno.id)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="authStore.puedeEscribir" @click="handleDelete(alumno.id)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -75,9 +75,11 @@ import { computed, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useAlumnosStore } from '@/stores/alumnos'
 import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
 
 const emit = defineEmits(['create', 'show', 'edit'])
 const alumnosStore = useAlumnosStore()
+const authStore = useAuthStore()
 const { alumnos, loading, error, currentPage, totalPages } = storeToRefs(alumnosStore)
 
 const alumnosOrdenados = computed(() => {
@@ -101,6 +103,10 @@ onMounted(() => {
 })
 
 async function handleDelete(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('¿Está seguro de eliminar este alumno?')) {
     try {
       await alumnosStore.deleteAlumno(id)
@@ -111,7 +117,7 @@ async function handleDelete(id: number) {
 }
 
 function handleCreate() {
-  if (!loading.value) {
+  if (authStore.puedeEscribir && !loading.value) {
     emit('create')
   }
 }

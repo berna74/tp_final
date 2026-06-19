@@ -2,7 +2,7 @@
   <div class="socios-list">
     <div class="header">
       <h2>Lista de Socios</h2>
-      <button @click="showCreateForm = true" class="btn-primary">
+      <button v-if="authStore.puedeEscribir" @click="showCreateForm = true" class="btn-primary">
         <Icon icon="mdi:plus" width="20" height="20" />
         Nuevo Socio
       </button>
@@ -63,10 +63,10 @@
               <button @click="viewSocio(socio)" class="btn-icon" title="Ver">
                 <Icon icon="mdi:eye" width="18" height="18" />
               </button>
-              <button @click="openUpdateForm(socio)" class="btn-icon" title="Editar">
+              <button v-if="authStore.puedeEscribir" @click="openUpdateForm(socio)" class="btn-icon" title="Editar">
                 <Icon icon="mdi:pencil" width="18" height="18" />
               </button>
-              <button @click="confirmDelete(socio.id)" class="btn-icon btn-delete" title="Eliminar">
+              <button v-if="authStore.puedeEscribir" @click="confirmDelete(socio.id)" class="btn-icon btn-delete" title="Eliminar">
                 <Icon icon="mdi:delete" width="18" height="18" />
               </button>
             </td>
@@ -98,8 +98,10 @@ import SociosCreate from './SociosCreate.vue'
 import SociosUpdate from './SociosUpdate.vue'
 import SociosShow from './SociosShow.vue'
 import type { Socio } from '@/interfaces/Socio'
+import { useAuthStore } from '@/stores/auth'
 
 const sociosStore = useSociosStore()
+const authStore = useAuthStore()
 const { socios, loading, error, currentPage, totalPages } = storeToRefs(sociosStore)
 
 const sociosOrdenados = computed(() => {
@@ -144,6 +146,10 @@ function viewSocio(socio: Socio) {
 }
 
 function openUpdateForm(socio: Socio) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   selectedSocio.value = socio
   showUpdateForm.value = true
 }
@@ -164,6 +170,10 @@ function handleUpdated() {
 }
 
 function confirmDelete(id: number) {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('Esta seguro de que desea eliminar este socio?')) {
     sociosStore.deleteSocio(id)
   }

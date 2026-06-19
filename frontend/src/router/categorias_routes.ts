@@ -16,12 +16,14 @@ const categorias_routes = [
             {
                 path: 'create',
                 name: 'categorias_create',
-                component: ()=>import('../components/categorias/CategoriasCreate.vue')
+                component: ()=>import('../components/categorias/CategoriasCreate.vue'),
+                meta: { requiresWrite: true }
             },
             {
                 path: ':id/edit',
                 name: 'categorias_edit',
-                component: ()=>import('../components/categorias/CategoriasUpdate.vue')
+                component: ()=>import('../components/categorias/CategoriasUpdate.vue'),
+                meta: { requiresWrite: true }
             }
         ]
     }

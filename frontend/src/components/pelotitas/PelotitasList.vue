@@ -3,6 +3,7 @@
     <div class="list-header">
       <h2>Movimientos de Pelotitas</h2>
       <button
+        v-if="authStore.puedeEscribir"
         @click="handleCreate"
         class="btn-primary"
         :disabled="pelotitasStore.loading"
@@ -50,10 +51,10 @@
             <button @click="$emit('showView', pelotita.id)" class="btn-icon" title="Ver">
               <Icon icon="mdi:eye" width="18" height="18" />
             </button>
-            <button @click="$emit('showEdit', pelotita.id)" class="btn-icon" title="Editar">
+            <button v-if="authStore.puedeEscribir" @click="$emit('showEdit', pelotita.id)" class="btn-icon" title="Editar">
               <Icon icon="mdi:pencil" width="18" height="18" />
             </button>
-            <button @click="handleDelete(pelotita.id!)" class="btn-icon btn-delete" title="Eliminar">
+            <button v-if="authStore.puedeEscribir" @click="handleDelete(pelotita.id!)" class="btn-icon btn-delete" title="Eliminar">
               <Icon icon="mdi:delete" width="18" height="18" />
             </button>
           </td>
@@ -86,9 +87,11 @@
 import { onMounted, computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { usePelotitasStore } from '@/stores/pelotitas'
+import { useAuthStore } from '@/stores/auth'
 
 const emit = defineEmits(['showCreate', 'showEdit', 'showView'])
 const pelotitasStore = usePelotitasStore()
+const authStore = useAuthStore()
 
 const resumen = computed(() => pelotitasStore.resumen)
 
@@ -116,6 +119,10 @@ const formatMoney = (value: number | null | undefined) => {
 }
 
 const handleDelete = async (id: number) => {
+  if (!authStore.puedeEscribir) {
+    return
+  }
+
   if (confirm('¿Está seguro de eliminar este movimiento?')) {
     try {
       await pelotitasStore.deletePelotita(id)
@@ -133,7 +140,7 @@ const goToPage = async (page: number) => {
 }
 
 const handleCreate = () => {
-  if (!pelotitasStore.loading) {
+  if (authStore.puedeEscribir && !pelotitasStore.loading) {
     emit('showCreate')
   }
 }

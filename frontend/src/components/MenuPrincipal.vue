@@ -1,38 +1,61 @@
 <template>
   <nav>
-    <RouterLink :to="{ name: 'home' }" class="logo-link" @click="closeMenu" aria-label="Inicio">
+    <RouterLink :to="{ name: 'home' }" class="logo-link" @click="cerrarMenu" aria-label="Inicio">
       <img src="/images/logo.svg" alt="Logo" class="logo" />
     </RouterLink>
 
-    <button class="menu-toggle" @click="toggleMenu" :aria-label="menuOpen ? 'Cerrar menú' : 'Abrir menú'">
-      <Icon :icon="menuOpen ? 'mdi:close' : 'mdi:menu'" width="28" height="28" />
+    <button class="menu-toggle" @click="alternarMenu" :aria-label="menuAbierto ? 'Cerrar menú' : 'Abrir menú'">
+      <Icon :icon="menuAbierto ? 'mdi:close' : 'mdi:menu'" width="28" height="28" />
     </button>
 
-    <div class="nav-links" :class="{ 'nav-links-open': menuOpen }">
-      <RouterLink :to="{ name: 'socios' }" @click="closeMenu">Socios</RouterLink>
-      <RouterLink :to="{ name: 'alumnos' }" @click="closeMenu">Alumnos</RouterLink>
-      <RouterLink :to="{ name: 'turnos' }" @click="closeMenu">Turnos</RouterLink>
-      <RouterLink :to="{ name: 'profesores' }" @click="closeMenu">Profesores</RouterLink>
-      <RouterLink :to="{ name: 'pagos' }" @click="closeMenu">Pagos</RouterLink>
-      <RouterLink :to="{ name: 'pelotitas' }" @click="closeMenu">Pelotitas</RouterLink>
+    <div class="nav-links" :class="{ 'nav-links-open': menuAbierto }">
+      <RouterLink :to="{ name: 'socios' }" @click="cerrarMenu">Socios</RouterLink>
+      <RouterLink :to="{ name: 'alumnos' }" @click="cerrarMenu">Alumnos</RouterLink>
+      <RouterLink :to="{ name: 'turnos' }" @click="cerrarMenu">Turnos</RouterLink>
+      <RouterLink :to="{ name: 'profesores' }" @click="cerrarMenu">Profesores</RouterLink>
+      <RouterLink :to="{ name: 'pagos' }" @click="cerrarMenu">Pagos</RouterLink>
+      <RouterLink :to="{ name: 'pelotitas' }" @click="cerrarMenu">Pelotitas</RouterLink>
       <EnlacesRedesSociales class="social-links-container" />
+      <RouterLink
+        v-if="!authStore.estaAutenticado"
+        :to="{ name: 'login' }"
+        class="login-entry"
+        @click="cerrarMenu"
+      >
+        <Icon icon="mdi:login-variant" width="20" height="20" />
+        <span>Ingresar</span>
+      </RouterLink>
+      <button v-else class="login-entry logout-entry" @click="manejarCierreSesion" type="button">
+        <Icon icon="mdi:logout-variant" width="20" height="20" />
+        <span>Salir</span>
+      </button>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import EnlacesRedesSociales from '@/components/EnlacesRedesSociales.vue'
+import { useAuthStore } from '@/stores/auth'
 
-const menuOpen = ref(false)
+const menuAbierto = ref(false)
+const router = useRouter()
+const authStore = useAuthStore()
 
-const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value
+const alternarMenu = () => {
+  menuAbierto.value = !menuAbierto.value
 }
 
-const closeMenu = () => {
-  menuOpen.value = false
+const cerrarMenu = () => {
+  menuAbierto.value = false
+}
+
+const manejarCierreSesion = async () => {
+  authStore.cerrarSesion()
+  cerrarMenu()
+  await router.push({ name: 'login' })
 }
 </script>
 
@@ -106,6 +129,35 @@ nav {
   display: flex;
 }
 
+.login-entry {
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.login-entry:hover {
+  background: #ffffff;
+  color: #022f9d;
+  border-color: #ffffff;
+}
+
+.logout-entry {
+  cursor: pointer;
+}
+
+.login-entry :deep(.ov-icon) {
+  color: currentColor;
+}
+
 @media (max-width: 768px) {
   nav {
     padding: 0.75rem 1rem;
@@ -158,6 +210,11 @@ nav {
     margin: 1rem 0 0;
     padding: 1rem 1.5rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+    justify-content: center;
+  }
+
+  .login-entry {
+    margin: 1rem 1.5rem 0;
     justify-content: center;
   }
 }
