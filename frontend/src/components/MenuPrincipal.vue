@@ -14,6 +14,7 @@
       <RouterLink :to="{ name: 'turnos' }" @click="cerrarMenu">Turnos</RouterLink>
       <RouterLink :to="{ name: 'profesores' }" @click="cerrarMenu">Profesores</RouterLink>
       <RouterLink :to="{ name: 'pagos' }" @click="cerrarMenu">Pagos</RouterLink>
+      <RouterLink :to="{ name: 'cobros' }" @click="cerrarMenu">Cobros</RouterLink>
       <RouterLink :to="{ name: 'pelotitas' }" @click="cerrarMenu">Pelotitas</RouterLink>
       <EnlacesRedesSociales class="social-links-container" />
       <RouterLink
@@ -74,6 +75,8 @@ nav {
 .logo-link {
   display: flex;
   align-items: center;
+  height: 100%;
+  line-height: 0;
   z-index: 1001;
 }
 
@@ -81,6 +84,7 @@ nav {
   width: 15rem;
   height: auto;
   margin: 0;
+  display: block;
 }
 
 .menu-toggle {

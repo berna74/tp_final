@@ -21,6 +21,8 @@
       :pago-id="selectedPagoId"
       @close="showView = false" 
     />
+
+    <CobrosEnPagos />
   </div>
 </template>
 
@@ -30,6 +32,7 @@ import PagosList from '@/components/pagos/PagosList.vue'
 import PagosCreate from '@/components/pagos/PagosCreate.vue'
 import PagosUpdate from '@/components/pagos/PagosUpdate.vue'
 import PagosShow from '@/components/pagos/PagosShow.vue'
+import CobrosEnPagos from '@/components/pagos/CobrosEnPagos.vue'
 
 const showCreate = ref(false)
 const showEdit = ref(false)

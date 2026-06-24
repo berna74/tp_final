@@ -9,6 +9,7 @@ import profesores_routes from './profesores_routes'
 import alumnos_routes from './alumnos_routes'
 import pagos_routes from './pagos_routes'
 import pelotitas_routes from './pelotitas_routes'
+import cobros_routes from './cobros_routes'
 
 // Club de Tenis - Sistema de Administración
 
@@ -19,6 +20,7 @@ const rutasApp: RouteRecordRaw[] = [
   ...profesores_routes,
   ...alumnos_routes,
   ...pagos_routes,
+  ...cobros_routes,
   ...pelotitas_routes,
 ]
 

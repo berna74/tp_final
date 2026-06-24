@@ -13,6 +13,22 @@ export const useSociosStore = defineStore('socios', () => {
   const totalCount = ref(0)
   const pageSize = ref(10)
 
+  function ordenarPorApellidoYNombre<T extends { apellido?: string; nombre?: string }>(items: T[]): T[] {
+    return [...items].sort((a, b) => {
+      const apellidoA = (a.apellido || '').toLowerCase().trim()
+      const apellidoB = (b.apellido || '').toLowerCase().trim()
+      const porApellido = apellidoA.localeCompare(apellidoB, 'es', { sensitivity: 'base' })
+
+      if (porApellido !== 0) {
+        return porApellido
+      }
+
+      const nombreA = (a.nombre || '').toLowerCase().trim()
+      const nombreB = (b.nombre || '').toLowerCase().trim()
+      return nombreA.localeCompare(nombreB, 'es', { sensitivity: 'base' })
+    })
+  }
+
   async function fetchSocios(page: number = 1) {
     loading.value = true
     error.value = null
@@ -22,12 +38,12 @@ export const useSociosStore = defineStore('socios', () => {
       const data = response.data
 
       if (Array.isArray(data)) {
-        socios.value = data
+        socios.value = ordenarPorApellidoYNombre(data)
         totalCount.value = data.length
         pageSize.value = data.length || 10
         totalPages.value = 1
       } else {
-        socios.value = data.items || []
+        socios.value = ordenarPorApellidoYNombre(data.items || [])
         totalPages.value = data.total_pages || 1
         totalCount.value = data.total_count || 0
         pageSize.value = data.page_size || 10

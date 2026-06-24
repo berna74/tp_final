@@ -13,13 +13,29 @@ export const useProfesoresStore = defineStore('profesores', () => {
   const totalCount = ref(0)
   const pageSize = ref(10)
 
+  function ordenarPorApellidoYNombre<T extends { apellido?: string; nombre?: string }>(items: T[]): T[] {
+    return [...items].sort((a, b) => {
+      const apellidoA = (a.apellido || '').toLowerCase().trim()
+      const apellidoB = (b.apellido || '').toLowerCase().trim()
+      const porApellido = apellidoA.localeCompare(apellidoB, 'es', { sensitivity: 'base' })
+
+      if (porApellido !== 0) {
+        return porApellido
+      }
+
+      const nombreA = (a.nombre || '').toLowerCase().trim()
+      const nombreB = (b.nombre || '').toLowerCase().trim()
+      return nombreA.localeCompare(nombreB, 'es', { sensitivity: 'base' })
+    })
+  }
+
   async function fetchProfesores(page: number = 1) {
     loading.value = true
     error.value = null
     try {
       currentPage.value = page
       const response = await ApiService.get(`/profesores/?page=${page}`)
-      profesores.value = response.data.items || []
+      profesores.value = ordenarPorApellidoYNombre(response.data.items || [])
       totalPages.value = response.data.total_pages || 1
       totalCount.value = response.data.total_count || 0
       pageSize.value = response.data.page_size || 10
