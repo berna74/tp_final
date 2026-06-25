@@ -17,13 +17,28 @@
           </div>
         </div>
 
+        <div class="form-group">
+          <label>Tipo de cobro:*</label>
+          <select v-model="tipoCobro" required>
+            <option value="mensual">Mensual</option>
+            <option value="dia_cancha">Día de cancha</option>
+          </select>
+        </div>
+
         <div class="form-row">
           <div class="form-group">
-            <label>Monto cuota:*</label>
-            <input type="number" step="0.01" min="0" v-model.number="montoCuota" required />
+            <label>{{ esDiaCancha ? 'Monto acumulado' : 'Monto cuota:*' }}</label>
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              v-model.number="montoCuota"
+              :required="!esDiaCancha"
+              :disabled="esDiaCancha"
+            />
           </div>
           <div class="form-group">
-            <label>Monto pagado:</label>
+            <label>{{ esDiaCancha ? 'Monto a sumar por día:*' : 'Monto pagado:' }}</label>
             <input type="number" step="0.01" min="0" v-model.number="montoPagado" />
           </div>
         </div>
@@ -66,7 +81,7 @@
         <div class="socios-box">
           <label v-for="socio in sociosFiltrados" :key="socio.id" class="socio-item">
             <input type="checkbox" :value="socio.id" v-model="sociosSeleccionados" />
-            <span>{{ socio.nombre }} {{ socio.apellido }} ({{ socio.dni }})</span>
+            <span>{{ socio.apellido }}, {{ socio.nombre }}</span>
           </label>
         </div>
 
@@ -153,6 +168,7 @@ const { socios } = storeToRefs(sociosStore)
 const hoy = new Date()
 const anio = ref(hoy.getFullYear())
 const mes = ref(hoy.getMonth() + 1)
+const tipoCobro = ref<'mensual' | 'dia_cancha'>('mensual')
 const montoCuota = ref(0)
 const montoPagado = ref(0)
 const fechaRegistroPago = ref(hoy.toISOString().split('T')[0])
@@ -164,6 +180,7 @@ const sociosSeleccionados = ref<number[]>([])
 const submitLoading = ref(false)
 const error = ref<string | null>(null)
 const resultado = ref<ResultadoLote | null>(null)
+const esDiaCancha = computed(() => tipoCobro.value === 'dia_cancha')
 
 onMounted(async () => {
   await sociosStore.fetchSocios()
@@ -171,12 +188,18 @@ onMounted(async () => {
 
 const sociosFiltrados = computed(() => {
   const q = busqueda.value.trim().toLowerCase()
-  if (!q) return socios.value
+  const filtrados = !q
+    ? [...socios.value]
+    : socios.value.filter((s) => {
+        const nombre = `${s.nombre} ${s.apellido}`.toLowerCase()
+        const dni = (s.dni || '').toLowerCase()
+        return nombre.includes(q) || dni.includes(q)
+      })
 
-  return socios.value.filter((s) => {
-    const nombre = `${s.nombre} ${s.apellido}`.toLowerCase()
-    const dni = (s.dni || '').toLowerCase()
-    return nombre.includes(q) || dni.includes(q)
+  return filtrados.sort((a, b) => {
+    const porApellido = (a.apellido || '').localeCompare(b.apellido || '', 'es', { sensitivity: 'base' })
+    if (porApellido !== 0) return porApellido
+    return (a.nombre || '').localeCompare(b.nombre || '', 'es', { sensitivity: 'base' })
   })
 })
 
@@ -228,7 +251,8 @@ async function procesarLote() {
       socios_ids: sociosSeleccionados.value,
       anio: anio.value,
       mes: mes.value,
-      monto_cuota: Number(montoCuota.value || 0),
+      tipo_cobro: tipoCobro.value,
+      monto_cuota: esDiaCancha.value ? Number(montoPagado.value || 0) : Number(montoCuota.value || 0),
       monto_pagado: Number(montoPagado.value || 0),
       fecha_registro_pago: fechaRegistroPago.value || null,
       metodo_pago: metodoPago.value,

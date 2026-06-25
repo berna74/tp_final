@@ -110,6 +110,7 @@ class CobroList(generics.ListCreateAPIView):
         data = payload.copy()
         monto_pagado = data.get("monto_pagado")
         fecha_registro_pago = data.get("fecha_registro_pago")
+        tipo_cobro = data.get("tipo_cobro", Cobro.TIPO_MENSUAL)
 
         if monto_pagado is not None and str(monto_pagado) != "" and not fecha_registro_pago:
             try:
@@ -117,6 +118,9 @@ class CobroList(generics.ListCreateAPIView):
                     data["fecha_registro_pago"] = date.today().isoformat()
             except Exception:
                 pass
+
+        if tipo_cobro == Cobro.TIPO_DIA_CANCHA and "monto_cuota" not in data and monto_pagado is not None:
+            data["monto_cuota"] = monto_pagado
 
         return data
 
@@ -150,6 +154,29 @@ class CobroList(generics.ListCreateAPIView):
                 validation_error_payload(serializer),
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+        tipo_cobro = serializer.validated_data.get("tipo_cobro", Cobro.TIPO_MENSUAL)
+        if tipo_cobro == Cobro.TIPO_DIA_CANCHA:
+            socio = serializer.validated_data["socio"]
+            anio = serializer.validated_data["anio"]
+            mes = serializer.validated_data["mes"]
+            monto_nuevo = serializer.validated_data.get("monto_pagado", Decimal("0"))
+
+            existente = Cobro.objects.filter(
+                socio=socio,
+                anio=anio,
+                mes=mes,
+                tipo_cobro=Cobro.TIPO_DIA_CANCHA,
+            ).first()
+            if existente:
+                existente.monto_pagado = existente.monto_pagado + monto_nuevo
+                existente.monto_cuota = existente.monto_pagado
+                existente.fecha_registro_pago = serializer.validated_data.get("fecha_registro_pago")
+                existente.metodo_pago = serializer.validated_data.get("metodo_pago", "")
+                existente.observaciones = serializer.validated_data.get("observaciones", "")
+                existente.save()
+                out = self.get_serializer(existente)
+                return Response(out.data, status=status.HTTP_200_OK)
 
         try:
             self.perform_create(serializer)
@@ -188,12 +215,19 @@ class CobroDetail(generics.RetrieveUpdateDestroyAPIView):
         partial = kwargs.pop("partial", False)
         data = request.data.copy()
         monto_pagado = data.get("monto_pagado")
+        tipo_cobro = data.get("tipo_cobro", cobro.tipo_cobro)
         if monto_pagado is not None and str(monto_pagado) != "":
             try:
                 if Decimal(str(monto_pagado)) > 0 and not data.get("fecha_registro_pago"):
                     data["fecha_registro_pago"] = date.today().isoformat()
             except Exception:
                 pass
+
+        if tipo_cobro == Cobro.TIPO_DIA_CANCHA:
+            monto_actual = cobro.monto_pagado
+            monto_nuevo = Decimal(str(monto_pagado)) if monto_pagado is not None and str(monto_pagado) != "" else Decimal("0")
+            data["monto_pagado"] = monto_actual + monto_nuevo
+            data["monto_cuota"] = monto_actual + monto_nuevo
 
         serializer = self.get_serializer(cobro, data=data, partial=partial)
         if not serializer.is_valid():
@@ -228,7 +262,17 @@ class CobroResumenAnual(generics.GenericAPIView):
 
         socios = Socio.objects.all().order_by("apellido", "nombre")
         cobros = Cobro.objects.filter(anio=anio).select_related("socio")
-        cobros_map = {(c.socio_id, c.mes): c for c in cobros}
+        cobros_map = {}
+        for c in cobros:
+            key = (c.socio_id, c.mes)
+            if key not in cobros_map:
+                cobros_map[key] = {"monto_cuota": Decimal("0"), "monto_pagado": Decimal("0"), "fecha": None}
+            cobros_map[key]["monto_cuota"] += c.monto_cuota
+            cobros_map[key]["monto_pagado"] += c.monto_pagado
+            if c.fecha_registro_pago and (
+                cobros_map[key]["fecha"] is None or c.fecha_registro_pago > cobros_map[key]["fecha"]
+            ):
+                cobros_map[key]["fecha"] = c.fecha_registro_pago
 
         socios_resumen = []
         deuda_global = Decimal("0")
@@ -241,8 +285,8 @@ class CobroResumenAnual(generics.GenericAPIView):
             for mes in range(1, 13):
                 cobro = cobros_map.get((socio.id, mes))
                 if cobro:
-                    monto_cuota = cobro.monto_cuota
-                    monto_pagado = cobro.monto_pagado
+                    monto_cuota = cobro["monto_cuota"]
+                    monto_pagado = cobro["monto_pagado"]
                     saldo = monto_cuota - monto_pagado
                     saldo = saldo if saldo > 0 else Decimal("0")
 
@@ -253,7 +297,7 @@ class CobroResumenAnual(generics.GenericAPIView):
                     else:
                         estado = "Pagado"
 
-                    fecha_registro_pago = cobro.fecha_registro_pago
+                    fecha_registro_pago = cobro["fecha"]
                 else:
                     monto_cuota = Decimal("0")
                     monto_pagado = Decimal("0")
@@ -315,6 +359,7 @@ class CobroLoteCreate(generics.GenericAPIView):
         socios_ids = list(dict.fromkeys(data["socios_ids"]))
         anio = data["anio"]
         mes = data["mes"]
+        tipo_cobro = data.get("tipo_cobro", Cobro.TIPO_MENSUAL)
         monto_cuota = data["monto_cuota"]
         monto_pagado = data.get("monto_pagado", Decimal("0"))
         fecha_registro_pago = data.get("fecha_registro_pago")
@@ -384,6 +429,7 @@ class CobroLoteCreate(generics.GenericAPIView):
                     socio=socio,
                     anio=anio,
                     mes=mes,
+                    tipo_cobro=tipo_cobro,
                     defaults={
                         "monto_cuota": monto_cuota,
                         "monto_pagado": monto_pagado,
@@ -403,6 +449,24 @@ class CobroLoteCreate(generics.GenericAPIView):
                     )
                     continue
 
+                if tipo_cobro == Cobro.TIPO_DIA_CANCHA:
+                    cobro.monto_pagado = cobro.monto_pagado + monto_pagado
+                    cobro.monto_cuota = cobro.monto_pagado
+                    cobro.fecha_registro_pago = fecha_registro_pago
+                    cobro.metodo_pago = metodo_pago
+                    cobro.observaciones = observaciones
+                    cobro.tipo_cobro = tipo_cobro
+                    cobro.save()
+
+                    actualizados.append(
+                        {
+                            "socio_id": socio_id,
+                            "socio_nombre": f"{socio.nombre} {socio.apellido}".strip(),
+                            "cobro_id": cobro.id,
+                        }
+                    )
+                    continue
+
                 if not actualizar_existentes:
                     omitidos.append(
                         {
@@ -414,10 +478,15 @@ class CobroLoteCreate(generics.GenericAPIView):
                     continue
 
                 cobro.monto_cuota = monto_cuota
-                cobro.monto_pagado = monto_pagado
+                if tipo_cobro == Cobro.TIPO_DIA_CANCHA:
+                    cobro.monto_pagado = cobro.monto_pagado + monto_pagado
+                    cobro.monto_cuota = cobro.monto_pagado
+                else:
+                    cobro.monto_pagado = monto_pagado
                 cobro.fecha_registro_pago = fecha_registro_pago
                 cobro.metodo_pago = metodo_pago
                 cobro.observaciones = observaciones
+                cobro.tipo_cobro = tipo_cobro
                 cobro.save()
 
                 actualizados.append(

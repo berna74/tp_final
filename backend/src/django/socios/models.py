@@ -4,7 +4,7 @@ from django.db import models
 class Socio(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    dni = models.CharField(max_length=20, unique=True)
+    dni = models.CharField(max_length=20, blank=True, default="")
     email = models.EmailField(max_length=100)
     telefono = models.CharField(max_length=20)
     fecha_inscripcion = models.DateField(null=True, blank=True)
@@ -19,9 +19,17 @@ class Socio(models.Model):
 
 
 class Cobro(models.Model):
+    TIPO_MENSUAL = "mensual"
+    TIPO_DIA_CANCHA = "dia_cancha"
+    TIPOS_COBRO = [
+        (TIPO_MENSUAL, "Mensual"),
+        (TIPO_DIA_CANCHA, "Dia de cancha"),
+    ]
+
     socio = models.ForeignKey(Socio, on_delete=models.CASCADE, related_name="cobros")
     anio = models.IntegerField()
     mes = models.IntegerField()
+    tipo_cobro = models.CharField(max_length=20, choices=TIPOS_COBRO, default=TIPO_MENSUAL)
     monto_cuota = models.DecimalField(max_digits=10, decimal_places=2)
     monto_pagado = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     fecha_registro_pago = models.DateField(null=True, blank=True)
@@ -32,8 +40,8 @@ class Cobro(models.Model):
         db_table = "COBROS"
         constraints = [
             models.UniqueConstraint(
-                fields=["socio", "anio", "mes"],
-                name="unique_cobro_periodo_por_socio",
+                fields=["socio", "anio", "mes", "tipo_cobro"],
+                name="unique_cobro_periodo_tipo_por_socio",
             )
         ]
 

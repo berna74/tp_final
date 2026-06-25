@@ -4,6 +4,7 @@ export interface Cobro {
   socio_nombre: string
   anio: number
   mes: number
+  tipo_cobro: 'mensual' | 'dia_cancha'
   monto_cuota: number | string
   monto_pagado: number | string
   saldo_mes: number | string

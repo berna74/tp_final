@@ -8,8 +8,16 @@
           <select v-model.number="formData.socio" required>
             <option value="">Seleccionar socio</option>
             <option v-for="s in socios" :key="s.id" :value="s.id">
-              {{ s.nombre }} {{ s.apellido }} (DNI: {{ s.dni }})
+              {{ s.apellido }}, {{ s.nombre }}
             </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tipo de cobro:*</label>
+          <select v-model="formData.tipo_cobro" required>
+            <option value="mensual">Mensual</option>
+            <option value="dia_cancha">Día de cancha</option>
           </select>
         </div>
 
@@ -28,11 +36,18 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label>Monto cuota:*</label>
-            <input type="number" step="0.01" min="0" v-model.number="formData.monto_cuota" required />
+            <label>{{ esDiaCancha ? 'Monto acumulado' : 'Monto cuota:*' }}</label>
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              v-model.number="formData.monto_cuota"
+              :required="!esDiaCancha"
+              :disabled="esDiaCancha"
+            />
           </div>
           <div class="form-group">
-            <label>Monto pagado:*</label>
+            <label>{{ esDiaCancha ? 'Monto a sumar por día:*' : 'Monto pagado:*' }}</label>
             <input type="number" step="0.01" min="0" v-model.number="formData.monto_pagado" required />
           </div>
         </div>
@@ -71,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCobrosStore } from '@/stores/cobros'
 import { useSociosStore } from '@/stores/socios'
@@ -86,12 +101,15 @@ const formData = ref({
   socio: null as number | null,
   anio: hoy.getFullYear(),
   mes: hoy.getMonth() + 1,
+  tipo_cobro: 'mensual' as 'mensual' | 'dia_cancha',
   monto_cuota: 0,
   monto_pagado: 0,
   fecha_registro_pago: hoy.toISOString().split('T')[0],
   metodo_pago: '',
   observaciones: '',
 })
+
+const esDiaCancha = computed(() => formData.value.tipo_cobro === 'dia_cancha')
 
 const submitLoading = ref(false)
 const error = ref<string | null>(null)
@@ -131,6 +149,8 @@ async function guardarCobro() {
     const payload = {
       ...formData.value,
       socio: formData.value.socio,
+      monto_cuota: esDiaCancha.value ? Number(formData.value.monto_pagado || 0) : Number(formData.value.monto_cuota || 0),
+      monto_pagado: Number(formData.value.monto_pagado || 0),
     }
 
     await cobrosStore.createCobro(payload)

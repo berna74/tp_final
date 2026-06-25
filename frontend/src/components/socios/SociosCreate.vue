@@ -16,8 +16,8 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label>DNI:*</label>
-            <input type="text" v-model="formData.dni" required />
+            <label>DNI:</label>
+            <input type="text" v-model="formData.dni" />
           </div>
           <div class="form-group">
             <label>Teléfono:*</label>

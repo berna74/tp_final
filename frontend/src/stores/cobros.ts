@@ -7,6 +7,7 @@ interface CobroLotePayload {
   socios_ids: number[]
   anio: number
   mes: number
+  tipo_cobro?: 'mensual' | 'dia_cancha'
   monto_cuota: number
   monto_pagado?: number
   fecha_registro_pago?: string | null

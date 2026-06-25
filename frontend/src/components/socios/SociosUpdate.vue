@@ -16,9 +16,9 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label>DNI:*</label>
-            <input type="text" v-model="formData.dni" required disabled />
-            <small>El DNI no se puede modificar</small>
+            <label>DNI:</label>
+            <input type="text" v-model="formData.dni" />
+            <small>Opcional</small>
           </div>
           <div class="form-group">
             <label>Teléfono:*</label>

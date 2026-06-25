@@ -8,6 +8,7 @@
       <div v-else-if="cobro" class="detalles">
         <div class="detail-row"><span class="label">ID:</span><span>{{ cobro.id }}</span></div>
         <div class="detail-row"><span class="label">Socio:</span><span>{{ cobro.socio_nombre }}</span></div>
+        <div class="detail-row"><span class="label">Tipo:</span><span>{{ cobro.tipo_cobro === 'dia_cancha' ? 'Día de cancha' : 'Mensual' }}</span></div>
         <div class="detail-row"><span class="label">Período:</span><span>{{ periodo(cobro.mes, cobro.anio) }}</span></div>
         <div class="detail-row"><span class="label">Monto cuota:</span><span>${{ monto(cobro.monto_cuota) }}</span></div>
         <div class="detail-row"><span class="label">Monto pagado:</span><span>${{ monto(cobro.monto_pagado) }}</span></div>

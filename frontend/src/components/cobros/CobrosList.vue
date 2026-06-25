@@ -22,6 +22,7 @@
           <tr>
             <th>ID</th>
             <th>Socio</th>
+            <th>Tipo</th>
             <th>Período</th>
             <th>Cuota</th>
             <th>Pagado</th>
@@ -36,6 +37,7 @@
           <tr v-for="item in cobros" :key="item.id">
             <td>{{ item.id }}</td>
             <td>{{ item.socio_nombre }}</td>
+            <td>{{ item.tipo_cobro === 'dia_cancha' ? 'Día de cancha' : 'Mensual' }}</td>
             <td>{{ formatoPeriodo(item.mes, item.anio) }}</td>
             <td class="monto">${{ formatoMonto(item.monto_cuota) }}</td>
             <td class="monto">${{ formatoMonto(item.monto_pagado) }}</td>

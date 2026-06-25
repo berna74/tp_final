@@ -7,7 +7,7 @@
           <h3>Información Personal</h3>
           <div class="detail-item"><strong>ID:</strong> {{ socio.id }}</div>
           <div class="detail-item"><strong>Nombre Completo:</strong> {{ socio.nombre }} {{ socio.apellido }}</div>
-          <div class="detail-item"><strong>DNI:</strong> {{ socio.dni }}</div>
+          <div class="detail-item" v-if="puedeVerDni"><strong>DNI:</strong> {{ socio.dni }}</div>
           <div class="detail-item"><strong>Email:</strong> {{ socio.email }}</div>
           <div class="detail-item"><strong>Teléfono:</strong> {{ socio.telefono }}</div>
           <div class="detail-item" v-if="socio.direccion"><strong>Dirección:</strong> {{ socio.direccion }}</div>
@@ -46,13 +46,17 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Socio } from '@/interfaces/Socio'
+import { useAuthStore } from '@/stores/auth'
 
 const props = defineProps<{
   socio: Socio
 }>()
 
 const emit = defineEmits(['close'])
+const authStore = useAuthStore()
+const puedeVerDni = computed(() => authStore.isAdmin || authStore.isSuperadmin)
 
 function formatDate(dateString: string): string {
   if (!dateString) return '-'

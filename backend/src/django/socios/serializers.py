@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models import Cobro, Socio
+from .roles import ROLE_ADMIN, ROLE_SUPERADMIN, resolver_rol_usuario
 
 
 class SocioSerializer(serializers.ModelSerializer):
@@ -50,6 +51,15 @@ class SocioSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
         data["categorias"] = []
+        request = self.context.get("request")
+        user = getattr(request, "user", None) if request is not None else None
+        if not user or not user.is_authenticated:
+            data["dni"] = ""
+            return data
+
+        rol = resolver_rol_usuario(user)
+        if rol not in {ROLE_SUPERADMIN, ROLE_ADMIN}:
+            data["dni"] = ""
         return data
 
 
@@ -77,6 +87,7 @@ class CobroSerializer(serializers.ModelSerializer):
             "socio_nombre",
             "anio",
             "mes",
+            "tipo_cobro",
             "monto_cuota",
             "monto_pagado",
             "saldo_mes",
@@ -124,6 +135,11 @@ class CobroLoteSerializer(serializers.Serializer):
     )
     anio = serializers.IntegerField(min_value=2000)
     mes = serializers.IntegerField(min_value=1, max_value=12)
+    tipo_cobro = serializers.ChoiceField(
+        choices=[Cobro.TIPO_MENSUAL, Cobro.TIPO_DIA_CANCHA],
+        required=False,
+        default=Cobro.TIPO_MENSUAL,
+    )
     monto_cuota = serializers.DecimalField(max_digits=10, decimal_places=2, min_value=0)
     monto_pagado = serializers.DecimalField(
         max_digits=10,

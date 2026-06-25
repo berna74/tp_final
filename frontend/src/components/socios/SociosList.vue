@@ -26,7 +26,7 @@
             <th>ID</th>
             <th>Apellido</th>
             <th>Nombre</th>
-            <th>DNI</th>
+            <th v-if="puedeVerDni">DNI</th>
             <th>Email</th>
             <th>Telefono</th>
             <th>Categorias</th>
@@ -40,7 +40,7 @@
             <td>{{ socio.id }}</td>
             <td>{{ socio.apellido }}</td>
             <td>{{ socio.nombre }}</td>
-            <td>{{ socio.dni }}</td>
+            <td v-if="puedeVerDni">{{ socio.dni }}</td>
             <td>{{ socio.email }}</td>
             <td>{{ socio.telefono }}</td>
             <td>
@@ -103,6 +103,7 @@ import { useAuthStore } from '@/stores/auth'
 const sociosStore = useSociosStore()
 const authStore = useAuthStore()
 const { socios, loading, error, currentPage, totalPages } = storeToRefs(sociosStore)
+const puedeVerDni = computed(() => authStore.isAdmin || authStore.isSuperadmin)
 
 const sociosOrdenados = computed(() => {
   return [...socios.value].sort((a, b) => {

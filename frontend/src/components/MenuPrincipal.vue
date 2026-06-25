@@ -164,21 +164,46 @@ nav {
 
 @media (max-width: 768px) {
   nav {
-    padding: 0.75rem 1rem;
-    height: 3.5rem;
+    padding: 0.35rem 0.25rem 0.5rem;
+    height: auto;
+    min-height: 5.4rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .logo-link {
+    width: 95vw;
+    max-width: 95vw;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    margin-top: 0.35rem;
   }
 
   .logo {
-    width: 10rem;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: initial;
   }
 
   .menu-toggle {
     display: block;
+    position: static;
+    transform: none;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 47, 157, 0.92);
+    border-radius: 0.5rem;
   }
 
   .nav-links {
     position: fixed;
-    top: 3.5rem;
+    top: 5.4rem;
     left: 0;
     right: 0;
     background: #022f9d;
@@ -224,21 +249,25 @@ nav {
 }
 
 @media (max-width: 480px) {
-  .logo {
-    width: 8rem;
+  nav {
+    padding: 0.25rem 0.2rem;
+    min-height: 5rem;
   }
 
-  nav {
-    padding: 0.5rem 1rem;
-    height: 3rem;
+  .logo-link {
+    width: 95vw;
+    max-width: 95vw;
+    padding: 0;
+    margin-top: 0.25rem;
   }
 
   .nav-links {
-    top: 3rem;
+    top: 5rem;
   }
 
   .menu-toggle {
-    padding: 0.25rem;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 }
 
