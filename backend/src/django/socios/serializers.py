@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Cobro, Socio
+from .models import Cobro, Pago, Socio
 from .roles import ROLE_ADMIN, ROLE_SUPERADMIN, resolver_rol_usuario
 
 
@@ -90,6 +90,7 @@ class CobroSerializer(serializers.ModelSerializer):
             "tipo_cobro",
             "monto_cuota",
             "monto_pagado",
+            "marcar_en_rojo",
             "saldo_mes",
             "estado",
             "fecha_registro_pago",
@@ -133,6 +134,12 @@ class CobroLoteSerializer(serializers.Serializer):
         child=serializers.IntegerField(min_value=1),
         allow_empty=False,
     )
+    socios_rojo_ids = serializers.ListField(
+        child=serializers.IntegerField(min_value=1),
+        allow_empty=True,
+        required=False,
+        default=list,
+    )
     anio = serializers.IntegerField(min_value=2000)
     mes = serializers.IntegerField(min_value=1, max_value=12)
     tipo_cobro = serializers.ChoiceField(
@@ -154,3 +161,58 @@ class CobroLoteSerializer(serializers.Serializer):
     actualizar_existentes = serializers.BooleanField(required=False, default=False)
     usar_todos_los_socios = serializers.BooleanField(required=False, default=False)
     marcar_todos_como_usuarios_socio = serializers.BooleanField(required=False, default=False)
+
+
+class PagoSerializer(serializers.ModelSerializer):
+    socio_id = serializers.PrimaryKeyRelatedField(
+        queryset=Socio.objects.all(),
+        source="socio",
+        required=False,
+        allow_null=True,
+    )
+    socio_nombre = serializers.SerializerMethodField()
+    alumno_nombre = serializers.SerializerMethodField()
+    profesor_nombre = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Pago
+        fields = [
+            "id",
+            "tipo",
+            "monto",
+            "fecha_pago",
+            "mes",
+            "anio",
+            "socio_id",
+            "alumno_id",
+            "profesor_id",
+            "metodo_pago",
+            "observaciones",
+            "socio_nombre",
+            "alumno_nombre",
+            "profesor_nombre",
+        ]
+        extra_kwargs = {
+            "alumno_id": {"required": False, "allow_null": True},
+            "profesor_id": {"required": False, "allow_null": True},
+            "metodo_pago": {"required": False, "allow_blank": True},
+            "observaciones": {"required": False, "allow_blank": True},
+        }
+
+    def get_socio_nombre(self, obj):
+        if not obj.socio:
+            return ""
+        return f"{obj.socio.apellido}, {obj.socio.nombre}".strip(", ")
+
+    def get_alumno_nombre(self, obj):
+        return ""
+
+    def get_profesor_nombre(self, obj):
+        return ""
+
+
+class PagosPaginatedResponseSerializer(serializers.Serializer):
+    items = PagoSerializer(many=True)
+    total_pages = serializers.IntegerField(min_value=1)
+    total_count = serializers.IntegerField(min_value=0)
+    page_size = serializers.IntegerField(min_value=1)

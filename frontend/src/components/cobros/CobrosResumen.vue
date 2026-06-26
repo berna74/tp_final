@@ -28,7 +28,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="fila in resumen.socios" :key="fila.socio_id">
+              <tr v-for="fila in sociosOrdenados" :key="fila.socio_id">
                 <td class="socio-cell">{{ fila.socio_nombre }}</td>
                 <td v-for="celda in fila.resumen_mensual" :key="`${fila.socio_id}-${celda.mes}`">
                   <span :class="['estado-chip', claseEstado(celda.estado)]" :title="detalleEstado(celda)">
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCobrosStore } from '@/stores/cobros'
 import type { CobroResumenMensual } from '@/interfaces/Cobro'
@@ -60,6 +60,13 @@ defineEmits(['close'])
 const cobrosStore = useCobrosStore()
 const { resumen, loading, error } = storeToRefs(cobrosStore)
 const anio = ref(new Date().getFullYear())
+
+const sociosOrdenados = computed(() => {
+  if (!resumen.value) return []
+  return [...resumen.value.socios].sort((a, b) =>
+    (a.socio_nombre || '').localeCompare(b.socio_nombre || '', 'es', { sensitivity: 'base' }),
+  )
+})
 
 onMounted(() => {
   cargarResumen()

@@ -32,6 +32,7 @@ class Cobro(models.Model):
     tipo_cobro = models.CharField(max_length=20, choices=TIPOS_COBRO, default=TIPO_MENSUAL)
     monto_cuota = models.DecimalField(max_digits=10, decimal_places=2)
     monto_pagado = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    marcar_en_rojo = models.BooleanField(default=False)
     fecha_registro_pago = models.DateField(null=True, blank=True)
     metodo_pago = models.CharField(max_length=50, blank=True, default="")
     observaciones = models.TextField(blank=True, default="")
@@ -47,3 +48,45 @@ class Cobro(models.Model):
 
     def __str__(self):
         return f"Cobro {self.socio_id} - {self.mes}/{self.anio}"
+
+
+class Pago(models.Model):
+    TIPO_CUOTA_SOCIAL = "Cuota Social"
+    TIPO_ABONO_MENSUAL = "Abono Mensual"
+    TIPO_ABONO_DIARIO = "Abono Diario"
+    TIPO_CLASE = "Clase"
+    TIPOS_PAGO = [
+        (TIPO_CUOTA_SOCIAL, "Cuota Social"),
+        (TIPO_ABONO_MENSUAL, "Abono Mensual"),
+        (TIPO_ABONO_DIARIO, "Abono Diario"),
+        (TIPO_CLASE, "Clase"),
+    ]
+
+    tipo = models.CharField(max_length=30, choices=TIPOS_PAGO, default=TIPO_ABONO_MENSUAL)
+    monto = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_pago = models.DateField()
+    mes = models.IntegerField()
+    anio = models.IntegerField()
+    socio = models.ForeignKey(
+        Socio,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="pagos",
+    )
+    alumno_id = models.IntegerField(null=True, blank=True)
+    profesor_id = models.IntegerField(null=True, blank=True)
+    metodo_pago = models.CharField(max_length=50, blank=True, default="")
+    observaciones = models.TextField(blank=True, default="")
+
+    class Meta:
+        db_table = "PAGOS"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["socio", "anio", "mes", "tipo"],
+                name="unique_pago_periodo_tipo_por_socio",
+            )
+        ]
+
+    def __str__(self):
+        return f"Pago {self.id} - {self.tipo} {self.mes}/{self.anio}"

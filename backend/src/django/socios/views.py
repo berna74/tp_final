@@ -8,11 +8,12 @@ from django.http import Http404
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import Cobro, Socio
+from .models import Cobro, Pago, Socio
 from .serializers import (
     CobroLoteSerializer,
     CobroSerializer,
     CobrosResumenQuerySerializer,
+    PagoSerializer,
     SocioSerializer,
 )
 
@@ -324,7 +325,7 @@ class CobroResumenAnual(generics.GenericAPIView):
             socios_resumen.append(
                 {
                     "socio_id": socio.id,
-                    "socio_nombre": f"{socio.nombre} {socio.apellido}".strip(),
+                    "socio_nombre": f"{socio.apellido}, {socio.nombre}".strip(", "),
                     "registra_deuda": socio.registra_deuda,
                     "deuda_total": float(deuda_total),
                     "resumen_mensual": resumen_mensual,
@@ -344,6 +345,104 @@ class CobroResumenAnual(generics.GenericAPIView):
         )
 
 
+class CobroMatrizDosAnios(generics.GenericAPIView):
+    serializer_class = CobroSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            page = int(request.query_params.get("page", 1))
+        except (TypeError, ValueError):
+            page = 1
+
+        try:
+            page_size = int(request.query_params.get("page_size", 15))
+        except (TypeError, ValueError):
+            page_size = 15
+
+        page = max(page, 1)
+        page_size = max(page_size, 1)
+
+        hoy = date.today()
+        columnas = []
+        mes_cursor = hoy.month
+        anio_cursor = hoy.year
+        for _ in range(12):
+            columnas.append(
+                {
+                    "anio": anio_cursor,
+                    "mes": mes_cursor,
+                    "key": f"{anio_cursor}-{mes_cursor:02d}",
+                }
+            )
+            mes_cursor -= 1
+            if mes_cursor == 0:
+                mes_cursor = 12
+                anio_cursor -= 1
+
+        anios = sorted({c["anio"] for c in columnas}, reverse=True)
+
+        socios_qs = Socio.objects.all().order_by("apellido", "nombre")
+        paginator = Paginator(socios_qs, page_size)
+
+        try:
+            socios_page = paginator.page(page)
+        except EmptyPage:
+            socios_page = paginator.page(paginator.num_pages if paginator.num_pages else 1)
+
+        socios = list(socios_page.object_list)
+        socios_ids = [s.id for s in socios]
+
+        periodos = {(col["anio"], col["mes"]) for col in columnas}
+        cobros = Cobro.objects.filter(anio__in=anios, socio_id__in=socios_ids)
+
+        montos_por_periodo = {}
+        rojo_por_periodo = {}
+        for cobro in cobros:
+            if (cobro.anio, cobro.mes) not in periodos:
+                continue
+            key = (cobro.socio_id, cobro.anio, cobro.mes)
+            if key not in montos_por_periodo:
+                montos_por_periodo[key] = Decimal("0")
+            montos_por_periodo[key] += cobro.monto_pagado
+            if key not in rojo_por_periodo:
+                rojo_por_periodo[key] = False
+            rojo_por_periodo[key] = rojo_por_periodo[key] or cobro.marcar_en_rojo
+
+        filas_socios = []
+        for socio in socios:
+            montos = {}
+            en_rojo = {}
+            total = Decimal("0")
+            for col in columnas:
+                valor = montos_por_periodo.get((socio.id, col["anio"], col["mes"]), Decimal("0"))
+                rojo = rojo_por_periodo.get((socio.id, col["anio"], col["mes"]), False)
+                montos[col["key"]] = float(valor)
+                en_rojo[col["key"]] = bool(rojo)
+                total += valor
+
+            filas_socios.append(
+                {
+                    "socio_id": socio.id,
+                    "socio_nombre": f"{socio.apellido}, {socio.nombre}".strip(", "),
+                    "montos": montos,
+                    "en_rojo": en_rojo,
+                    "total_registrado": float(total),
+                }
+            )
+
+        return Response(
+            {
+                "anios": anios,
+                "columnas": columnas,
+                "socios": filas_socios,
+                "page": socios_page.number,
+                "total_pages": paginator.num_pages if paginator.num_pages else 1,
+                "total_count": paginator.count,
+                "page_size": paginator.per_page,
+            }
+        )
+
+
 class CobroLoteCreate(generics.GenericAPIView):
     serializer_class = CobroLoteSerializer
 
@@ -357,6 +456,7 @@ class CobroLoteCreate(generics.GenericAPIView):
 
         data = serializer.validated_data
         socios_ids = list(dict.fromkeys(data["socios_ids"]))
+        socios_rojo_ids = list(dict.fromkeys(data.get("socios_rojo_ids", [])))
         anio = data["anio"]
         mes = data["mes"]
         tipo_cobro = data.get("tipo_cobro", Cobro.TIPO_MENSUAL)
@@ -375,12 +475,14 @@ class CobroLoteCreate(generics.GenericAPIView):
         if monto_pagado > 0 and not fecha_registro_pago:
             fecha_registro_pago = date.today()
 
-        socios = Socio.objects.in_bulk(socios_ids)
+        todos_los_ids = list(dict.fromkeys([*socios_ids, *socios_rojo_ids]))
+        socios = Socio.objects.in_bulk(todos_los_ids)
 
         creados = []
         actualizados = []
         omitidos = []
         errores = []
+        marcados_en_rojo = []
 
         usuarios_socio_resultado = {
             "marcados": 0,
@@ -499,6 +601,41 @@ class CobroLoteCreate(generics.GenericAPIView):
             except Exception as exc:
                 errores.append({"socio_id": socio_id, "mensaje": str(exc)})
 
+        for socio_id in socios_rojo_ids:
+            socio = socios.get(socio_id)
+            if not socio:
+                errores.append({"socio_id": socio_id, "mensaje": "Socio no encontrado para marcar en rojo"})
+                continue
+
+            try:
+                cobro_rojo, _ = Cobro.objects.get_or_create(
+                    socio=socio,
+                    anio=anio,
+                    mes=mes,
+                    tipo_cobro=tipo_cobro,
+                    defaults={
+                        "monto_cuota": monto_cuota,
+                        "monto_pagado": Decimal("0"),
+                        "fecha_registro_pago": None,
+                        "metodo_pago": "",
+                        "observaciones": "Jugó y no pagó",
+                    },
+                )
+
+                if not cobro_rojo.marcar_en_rojo:
+                    cobro_rojo.marcar_en_rojo = True
+                    cobro_rojo.save(update_fields=["marcar_en_rojo"])
+
+                marcados_en_rojo.append(
+                    {
+                        "socio_id": socio_id,
+                        "socio_nombre": f"{socio.nombre} {socio.apellido}".strip(),
+                        "cobro_id": cobro_rojo.id,
+                    }
+                )
+            except Exception as exc:
+                errores.append({"socio_id": socio_id, "mensaje": str(exc)})
+
         return Response(
             {
                 "mensaje": "Lote de cobros procesado",
@@ -508,13 +645,108 @@ class CobroLoteCreate(generics.GenericAPIView):
                     "actualizados": len(actualizados),
                     "omitidos": len(omitidos),
                     "errores": len(errores),
+                    "marcados_en_rojo": len(marcados_en_rojo),
                     "usuarios_socio": usuarios_socio_resultado,
                 },
                 "detalle": {
                     "creados": creados,
                     "actualizados": actualizados,
                     "omitidos": omitidos,
+                    "marcados_en_rojo": marcados_en_rojo,
                     "errores": errores,
                 },
             }
         )
+
+
+class PagoList(generics.ListCreateAPIView):
+    queryset = Pago.objects.select_related("socio").all().order_by("-fecha_pago", "-id")
+    serializer_class = PagoSerializer
+
+    def list(self, request, *args, **kwargs):
+        try:
+            queryset = self.filter_queryset(self.get_queryset())
+            paginator = Paginator(queryset, 10)
+            page_number = request.query_params.get("page", 1)
+
+            try:
+                page_obj = paginator.page(page_number)
+            except EmptyPage:
+                page_obj = paginator.page(paginator.num_pages if paginator.num_pages else 1)
+
+            serializer = self.get_serializer(page_obj.object_list, many=True)
+            return Response(
+                {
+                    "items": serializer.data,
+                    "total_pages": paginator.num_pages if paginator.num_pages else 1,
+                    "total_count": paginator.count,
+                    "page_size": paginator.per_page,
+                }
+            )
+        except DatabaseError:
+            return Response({"items": [], "total_pages": 1, "total_count": 0, "page_size": 10})
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            self.perform_create(serializer)
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class PagoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pago.objects.select_related("socio").all()
+    serializer_class = PagoSerializer
+
+    def _get_object_or_none(self):
+        try:
+            return self.get_object()
+        except Http404:
+            return None
+
+    def put(self, request, *args, **kwargs):
+        kwargs["partial"] = True
+        return self.update(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        pago = self._get_object_or_none()
+        if pago is None:
+            return Response({"mensaje": "Pago no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+        return Response(self.get_serializer(pago).data)
+
+    def update(self, request, *args, **kwargs):
+        pago = self._get_object_or_none()
+        if pago is None:
+            return Response({"mensaje": "Pago no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        partial = kwargs.pop("partial", False)
+        serializer = self.get_serializer(pago, data=request.data, partial=partial)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            self.perform_update(serializer)
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+        pago = self._get_object_or_none()
+        if pago is None:
+            return Response({"mensaje": "Pago no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        self.perform_destroy(pago)
+        return Response({"mensaje": "Pago eliminado"})

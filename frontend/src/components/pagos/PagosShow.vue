@@ -24,7 +24,7 @@
         </div>
         
         <div class="detail-row">
-          <span class="label">Fecha de Pago:</span>
+          <span class="label">Fecha de registro:</span>
           <span class="value">{{ formatDate(pago.fecha_pago) }}</span>
         </div>
         

@@ -16,11 +16,6 @@
         <strong>Alumnos</strong>
         <small>Gestión de alumnos de clases</small>
       </router-link>
-      <router-link to="/turnos" class="home-card">
-        <Icon icon="mdi:clock-outline" width="40" height="40" />
-        <strong>Turnos</strong>
-        <small>Reserva de turnos de cancha</small>
-      </router-link>
       <router-link to="/profesores" class="home-card">
         <Icon icon="mdi:account-child" width="40" height="40" />
         <strong>Profesores</strong>
@@ -40,6 +35,11 @@
         <Icon icon="mdi:dots-triangle" width="40" height="40" />
         <strong>Pelotitas</strong>
         <small>Compra y venta de pelotitas</small>
+      </router-link>
+      <router-link to="/ingresos-gastos" class="home-card">
+        <Icon icon="mdi:cash-check" width="40" height="40" />
+        <strong>Ingresos/Gastos</strong>
+        <small>Control de ingresos y gastos</small>
       </router-link>
     </div>
     <footer class="home-footer">

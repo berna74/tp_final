@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import ApiService from '@/services/ApiService'
-import type { Cobro, CobroResumenAnual } from '@/interfaces/Cobro'
+import type { Cobro, CobroMatrizDosAnios, CobroResumenAnual } from '@/interfaces/Cobro'
 
 interface CobroLotePayload {
   socios_ids: number[]
+  socios_rojo_ids?: number[]
   anio: number
   mes: number
   tipo_cobro?: 'mensual' | 'dia_cancha'
@@ -22,6 +23,7 @@ export const useCobrosStore = defineStore('cobros', () => {
   const cobros = ref<Cobro[]>([])
   const cobro = ref<Cobro | null>(null)
   const resumen = ref<CobroResumenAnual | null>(null)
+  const matrizDosAnios = ref<CobroMatrizDosAnios | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
   const currentPage = ref(1)
@@ -132,10 +134,25 @@ export const useCobrosStore = defineStore('cobros', () => {
     }
   }
 
+  async function fetchMatrizDosAnios(page: number = 1, pageSize: number = 15) {
+    loading.value = true
+    error.value = null
+    try {
+      const response = await ApiService.get(`/cobros/matriz-dos-anios/?page=${page}&page_size=${pageSize}`)
+      matrizDosAnios.value = response.data
+    } catch (e: any) {
+      error.value = e.message || 'Error al cargar matriz de cobros'
+      console.error('Error fetching matriz cobros:', e)
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     cobros,
     cobro,
     resumen,
+    matrizDosAnios,
     loading,
     error,
     currentPage,
@@ -149,5 +166,6 @@ export const useCobrosStore = defineStore('cobros', () => {
     deleteCobro,
     fetchResumen,
     createCobrosLote,
+    fetchMatrizDosAnios,
   }
 })

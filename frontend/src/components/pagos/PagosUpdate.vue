@@ -5,41 +5,17 @@
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
           <label>Tipo de Pago:*</label>
-          <select v-model="formData.tipo" required @change="handleTipoChange">
-            <option value="">Seleccionar</option>
-            <option value="Cuota Social">Cuota Social</option>
+          <select v-model="formData.tipo" required>
             <option value="Abono Mensual">Abono Mensual</option>
-            <option value="Abono Diario">Abono Diario</option>
-            <option value="Clase">Clase</option>
           </select>
         </div>
 
-        <div class="form-group" v-if="formData.tipo === 'Cuota Social'">
+        <div class="form-group">
           <label>Pagado por (Socio):*</label>
           <select v-model.number="formData.socio_id" required>
             <option value="">Seleccionar socio</option>
             <option v-for="socio in socios" :key="socio.id" :value="socio.id">
-              {{ socio.nombre }} {{ socio.apellido }} (DNI: {{ socio.dni }})
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group" v-if="formData.tipo === 'Abono Mensual' || formData.tipo === 'Abono Diario' || formData.tipo === 'Clase'">
-          <label>Pagado por (Alumno):*</label>
-          <select v-model.number="formData.alumno_id" required>
-            <option value="">Seleccionar alumno</option>
-            <option v-for="alumno in alumnos" :key="alumno.id" :value="alumno.id">
-              {{ alumno.nombre }} {{ alumno.apellido }} (DNI: {{ alumno.dni }})
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group" v-if="formData.tipo === 'Clase'">
-          <label>Profesor:*</label>
-          <select v-model.number="formData.profesor_id" required>
-            <option value="">Seleccionar profesor</option>
-            <option v-for="profesor in profesores" :key="profesor.id" :value="profesor.id">
-              {{ profesor.nombre }} {{ profesor.apellido }}
+              {{ socio.apellido }}, {{ socio.nombre }}
             </option>
           </select>
         </div>
@@ -101,8 +77,6 @@
 import { ref, onMounted } from 'vue'
 import { usePagosStore } from '@/stores/pagos'
 import { useSociosStore } from '@/stores/socios'
-import { useAlumnosStore } from '@/stores/alumnos'
-import { useProfesoresStore } from '@/stores/profesores'
 import { storeToRefs } from 'pinia'
 
 const props = defineProps<{
@@ -112,12 +86,8 @@ const props = defineProps<{
 const emit = defineEmits(['close', 'updated'])
 const pagosStore = usePagosStore()
 const sociosStore = useSociosStore()
-const alumnosStore = useAlumnosStore()
-const profesoresStore = useProfesoresStore()
 
 const { socios } = storeToRefs(sociosStore)
-const { alumnos } = storeToRefs(alumnosStore)
-const { profesores } = storeToRefs(profesoresStore)
 
 const formData = ref({
   tipo: '',
@@ -137,8 +107,6 @@ const error = ref<string | null>(null)
 
 onMounted(async () => {
   await sociosStore.fetchSocios()
-  await alumnosStore.fetchAlumnos()
-  await profesoresStore.fetchProfesores()
   
   // Cargar datos del pago
   await pagosStore.fetchPago(props.pagoId)
@@ -160,12 +128,6 @@ onMounted(async () => {
   }
 })
 
-function handleTipoChange() {
-  formData.value.socio_id = null
-  formData.value.alumno_id = null
-  formData.value.profesor_id = null
-}
-
 function getMesNombre(mes: number): string {
   const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
                  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -177,18 +139,13 @@ async function handleSubmit() {
   error.value = null
   
   try {
-    const pagoData = { ...formData.value }
-    
-    if (pagoData.tipo === 'Cuota Social') {
-      pagoData.alumno_id = null
-      pagoData.profesor_id = null
-    } else if (pagoData.tipo === 'Abono Mensual' || pagoData.tipo === 'Abono Diario') {
-      pagoData.socio_id = null
-      pagoData.profesor_id = null
-    } else if (pagoData.tipo === 'Clase') {
-      pagoData.socio_id = null
+    const pagoData = {
+      ...formData.value,
+      tipo: 'Abono Mensual',
+      alumno_id: null,
+      profesor_id: null,
     }
-    
+
     await pagosStore.updatePago(props.pagoId, pagoData)
     emit('updated')
   } catch (e: any) {

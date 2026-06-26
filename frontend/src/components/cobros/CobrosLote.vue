@@ -89,6 +89,25 @@
           Seleccionados: {{ sociosSeleccionados.length }}
         </div>
 
+        <div class="selector-header rojo-header">
+          <h3>Marcar en rojo</h3>
+          <div class="selector-tools">
+            <button type="button" class="btn-link" @click="seleccionarTodosRojoFiltrados">Seleccionar filtrados</button>
+            <button type="button" class="btn-link" @click="limpiarSeleccionRojo">Limpiar selección</button>
+          </div>
+        </div>
+
+        <div class="socios-box rojo-box">
+          <label v-for="socio in sociosFiltrados" :key="`rojo-${socio.id}`" class="socio-item">
+            <input type="checkbox" :value="socio.id" v-model="sociosRojoSeleccionados" />
+            <span>{{ socio.apellido }}, {{ socio.nombre }}</span>
+          </label>
+        </div>
+
+        <div class="resumen-seleccion resumen-rojo">
+          Marcados en rojo: {{ sociosRojoSeleccionados.length }}
+        </div>
+
         <div class="form-actions">
           <button type="submit" class="btn-submit" :disabled="submitLoading">{{ submitLoading ? 'Procesando...' : 'Procesar lote' }}</button>
           <button type="button" class="btn-cancel" @click="$emit('close')">Cerrar</button>
@@ -103,6 +122,7 @@
           Creados: {{ resultado.resumen.creados }} |
           Actualizados: {{ resultado.resumen.actualizados }} |
           Omitidos: {{ resultado.resumen.omitidos }} |
+          Marcados en rojo: {{ resultado.resumen.marcados_en_rojo || 0 }} |
           Errores: {{ resultado.resumen.errores }}
         </p>
         <p v-if="resultado.resumen.usuarios_socio">
@@ -144,6 +164,7 @@ interface ResultadoLote {
     actualizados: number
     omitidos: number
     errores: number
+    marcados_en_rojo?: number
     usuarios_socio?: {
       marcados: number
       ya_eransocio: number
@@ -155,6 +176,7 @@ interface ResultadoLote {
     creados: Array<{ socio_id: number; socio_nombre: string; cobro_id: number }>
     actualizados: Array<{ socio_id: number; socio_nombre: string; cobro_id: number }>
     omitidos: Array<{ socio_id: number; socio_nombre: string; mensaje: string }>
+    marcados_en_rojo?: Array<{ socio_id: number; socio_nombre: string; cobro_id: number }>
     errores: Array<{ socio_id: number; mensaje: string }>
   }
 }
@@ -176,6 +198,7 @@ const metodoPago = ref('')
 const observaciones = ref('')
 const busqueda = ref('')
 const sociosSeleccionados = ref<number[]>([])
+const sociosRojoSeleccionados = ref<number[]>([])
 
 const submitLoading = ref(false)
 const error = ref<string | null>(null)
@@ -219,6 +242,9 @@ const filasResultado = computed(() => {
   resultado.value.detalle.errores.forEach((item, idx) => {
     filas.push({ key: `e-${item.socio_id}-${idx}`, accion: 'Error', socio: `Socio ${item.socio_id}`, detalle: item.mensaje })
   })
+  resultado.value.detalle.marcados_en_rojo?.forEach((item) => {
+    filas.push({ key: `r-${item.socio_id}`, accion: 'Marcado en rojo', socio: item.socio_nombre, detalle: `Cobro #${item.cobro_id}` })
+  })
 
   return filas
 })
@@ -236,12 +262,20 @@ function limpiarSeleccion() {
   sociosSeleccionados.value = []
 }
 
+function seleccionarTodosRojoFiltrados() {
+  sociosRojoSeleccionados.value = Array.from(new Set([...sociosRojoSeleccionados.value, ...sociosFiltrados.value.map((s) => s.id)]))
+}
+
+function limpiarSeleccionRojo() {
+  sociosRojoSeleccionados.value = []
+}
+
 async function procesarLote() {
   error.value = null
   resultado.value = null
 
-  if (!sociosSeleccionados.value.length) {
-    error.value = 'Seleccione al menos un socio'
+  if (!sociosSeleccionados.value.length && !sociosRojoSeleccionados.value.length) {
+    error.value = 'Seleccione al menos un socio en "Socios a incluir" o "Marcar en rojo"'
     return
   }
 
@@ -249,6 +283,7 @@ async function procesarLote() {
   try {
     const response = await cobrosStore.createCobrosLote({
       socios_ids: sociosSeleccionados.value,
+      socios_rojo_ids: sociosRojoSeleccionados.value,
       anio: anio.value,
       mes: mes.value,
       tipo_cobro: tipoCobro.value,
@@ -348,6 +383,10 @@ input[type='checkbox'] {
   margin-top: 12px;
 }
 
+.rojo-header h3 {
+  color: #9f1239;
+}
+
 .selector-tools {
   display: flex;
   gap: 0.5rem;
@@ -391,6 +430,11 @@ input[type='checkbox'] {
   gap: 0.5rem;
 }
 
+.rojo-box {
+  border-color: #fecdd3;
+  background: #fff1f2;
+}
+
 .socio-item {
   display: flex;
   gap: 0.5rem;
@@ -401,6 +445,10 @@ input[type='checkbox'] {
 .resumen-seleccion {
   margin-top: 10px;
   font-weight: 700;
+}
+
+.resumen-rojo {
+  color: #9f1239;
 }
 
 .form-actions {

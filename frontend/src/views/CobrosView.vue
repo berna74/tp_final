@@ -6,6 +6,7 @@
       @edit="manejarEditar"
       @show="manejarMostrar"
       @show-resumen="manejarMostrarResumen"
+      @show-matriz="manejarMostrarMatriz"
     />
 
     <CobrosLote
@@ -30,6 +31,11 @@
       v-if="mostrarResumen"
       @close="mostrarResumen = false"
     />
+
+    <CobrosMatrizDosAnios
+      v-if="mostrarMatriz"
+      @close="mostrarMatriz = false"
+    />
   </div>
 </template>
 
@@ -40,11 +46,13 @@ import CobrosUpdate from '@/components/cobros/CobrosUpdate.vue'
 import CobrosShow from '@/components/cobros/CobrosShow.vue'
 import CobrosResumen from '@/components/cobros/CobrosResumen.vue'
 import CobrosLote from '@/components/cobros/CobrosLote.vue'
+import CobrosMatrizDosAnios from '@/components/cobros/CobrosMatrizDosAnios.vue'
 
 const mostrarEditar = ref(false)
 const mostrarDetalle = ref(false)
 const mostrarResumen = ref(false)
-const mostrarLote = ref(true)
+const mostrarMatriz = ref(false)
+const mostrarLote = ref(false)
 const cobroSeleccionadoId = ref<number | null>(null)
 
 function manejarEditar(id: number) {
@@ -64,6 +72,10 @@ function manejarActualizado() {
 
 function manejarMostrarResumen() {
   mostrarResumen.value = true
+}
+
+function manejarMostrarMatriz() {
+  mostrarMatriz.value = true
 }
 </script>
 

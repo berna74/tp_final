@@ -2,7 +2,17 @@ from django.urls import path, re_path
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from .auth_jwt import CustomTokenObtainPairView
-from .views import CobroDetail, CobroList, CobroLoteCreate, CobroResumenAnual, SocioDetail, SocioList
+from .views import (
+    CobroDetail,
+    CobroList,
+    CobroLoteCreate,
+    CobroMatrizDosAnios,
+    CobroResumenAnual,
+    PagoDetail,
+    PagoList,
+    SocioDetail,
+    SocioList,
+)
 
 
 urlpatterns = [
@@ -13,5 +23,8 @@ urlpatterns = [
     re_path(r"^cobros/?$", CobroList.as_view()),
     re_path(r"^cobros/lote/?$", CobroLoteCreate.as_view()),
     re_path(r"^cobros/resumen/?$", CobroResumenAnual.as_view()),
+    re_path(r"^cobros/matriz-dos-anios/?$", CobroMatrizDosAnios.as_view()),
     re_path(r"^cobros/(?P<pk>\d+)/?$", CobroDetail.as_view()),
+    re_path(r"^pagos/?$", PagoList.as_view()),
+    re_path(r"^pagos/(?P<pk>\d+)/?$", PagoDetail.as_view()),
 ]

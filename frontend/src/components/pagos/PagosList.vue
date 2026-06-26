@@ -19,10 +19,9 @@
             <th>ID</th>
             <th>Tipo</th>
             <th>Monto</th>
-            <th>Fecha Pago</th>
+            <th>Fecha de registro</th>
             <th>Período</th>
             <th>Pagado por</th>
-            <th>Profesor</th>
             <th>Método</th>
             <th>Observaciones</th>
             <th>Acciones</th>
@@ -40,7 +39,6 @@
             <td>{{ formatDate(pago.fecha_pago) }}</td>
             <td>{{ formatPeriodo(pago.mes, pago.anio) }}</td>
             <td>{{ getBeneficiario(pago) }}</td>
-            <td>{{ pago.profesor_nombre || '-' }}</td>
             <td>{{ pago.metodo_pago || '-' }}</td>
             <td class="observaciones">{{ pago.observaciones || '-' }}</td>
             <td class="actions">
@@ -121,8 +119,8 @@ function formatPeriodo(mes: number, anio: number): string {
 }
 
 function getBeneficiario(pago: Pago): string {
-  if (pago.socio_nombre) return `Socio: ${pago.socio_nombre}`
-  if (pago.alumno_nombre) return `Alumno: ${pago.alumno_nombre}`
+  if (pago.socio_nombre) return pago.socio_nombre
+  if (pago.alumno_nombre) return pago.alumno_nombre
   return '-'
 }
 

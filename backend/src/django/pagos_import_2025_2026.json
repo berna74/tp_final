@@ -1,0 +1,4013 @@
+{
+  "meta": {
+    "source": "/home/martin/Descargas/Abonos.xlsx",
+    "sheet": "Abonos",
+    "records": 572
+  },
+  "items": [
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 78500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Acejo",
+      "nombre": "Juan Manuel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 78500.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Albornoz",
+      "nombre": "Maxi",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 68500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 65000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Albornoz",
+      "nombre": "Omar",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 8100.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 2700.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 5800.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Arribas",
+      "nombre": "Julián",
+      "monto": 7000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 13600.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Arribas",
+      "nombre": "Luciano",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Baroni",
+      "nombre": "Sergio",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Baroni",
+      "nombre": "Sergio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Baroni",
+      "nombre": "Sergio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Baroni",
+      "nombre": "Sergio",
+      "monto": 7000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Bernatene",
+      "nombre": "Martín",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Bohoslavsky",
+      "nombre": "Juan Pablo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Calderón",
+      "nombre": "Aidano",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Calderón",
+      "nombre": "Aidano",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Calderón",
+      "nombre": "Aidano",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Canosa",
+      "nombre": "Orlando",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Cellerino",
+      "nombre": "Leo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Cellerino",
+      "nombre": "Leo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Cellerino",
+      "nombre": "Leo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Cellerino",
+      "nombre": "Leo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Cerutti",
+      "nombre": "Sebastián",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Cerutti",
+      "nombre": "Sebastián",
+      "monto": 43500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Cerutti",
+      "nombre": "Sebastián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Cerutti",
+      "nombre": "Sebastián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Coali",
+      "nombre": "Martín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Coali",
+      "nombre": "Martín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Coali",
+      "nombre": "Martín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Coronel",
+      "nombre": "Ricardo",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Delgado",
+      "nombre": "Agustina",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Escarate",
+      "nombre": "Rocío",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Escarate",
+      "nombre": "Rocío",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Escarate",
+      "nombre": "Rocío",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Escarate",
+      "nombre": "Rocío",
+      "monto": 14000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 78500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 70000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Echegaray",
+      "nombre": "Rodrigo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Fracassi",
+      "nombre": "Ariel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "García",
+      "nombre": "Flor",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "García",
+      "nombre": "Ceferino",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "García",
+      "nombre": "Ceferino",
+      "monto": 18000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "García",
+      "nombre": "Ceferino",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "García",
+      "nombre": "Ceferino",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 80000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 175000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Gómez",
+      "nombre": "Bruno",
+      "monto": 60000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Henseling",
+      "nombre": "Gastón",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Henseling",
+      "nombre": "Gastón",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Henseling",
+      "nombre": "Gastón",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Henseling",
+      "nombre": "Gastón",
+      "monto": 43500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 60000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Jaimes",
+      "nombre": "Diego",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 122000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Kriger",
+      "nombre": "Nicolás",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Larrieu",
+      "nombre": "Juan Manuel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Lezcano",
+      "nombre": "Federico",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Linares",
+      "nombre": "Germán",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Malaspina",
+      "nombre": "Julio",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Mangioni",
+      "nombre": "Juan",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Mangioni",
+      "nombre": "Juan",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Mazzanti",
+      "nombre": "Rodrigo",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 70000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Méndez",
+      "nombre": "Alejandro",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 5800.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 17900.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Mesa",
+      "nombre": "Gastón",
+      "monto": 21000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Mesa",
+      "nombre": "Joaquín",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Mesa",
+      "nombre": "Joaquín",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Mesa",
+      "nombre": "Joaquín",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Mesa",
+      "nombre": "Joaquín",
+      "monto": 43500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Miguel",
+      "nombre": "Daniel",
+      "monto": 21500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Miguel",
+      "nombre": "Daniel",
+      "monto": 12900.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Miguel",
+      "nombre": "Daniel",
+      "monto": 4300.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Miguel",
+      "nombre": "Daniel",
+      "monto": 8600.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Morales",
+      "nombre": "Antonio",
+      "monto": 14600.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Morales",
+      "nombre": "Marco",
+      "monto": 5400.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Morales",
+      "nombre": "Marco",
+      "monto": 2700.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Morales",
+      "nombre": "Marco",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Morales",
+      "nombre": "Marco",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Morales",
+      "nombre": "Marco",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 2700.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 8900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 4300.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 4300.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 21500.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Nardini",
+      "nombre": "Gonzalo",
+      "monto": 4300.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Otermin",
+      "nombre": "Esteban",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 2700.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 12900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 20300.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 8700.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 2900.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 37200.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 39300.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Pacho",
+      "nombre": "Nelson",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Pocai",
+      "nombre": "Gastón",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 123500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Pick",
+      "nombre": "Guillermo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 150000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 60000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 70000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Retamal",
+      "nombre": "Alejandro",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 150000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 65000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 60000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 70000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Retamal",
+      "nombre": "Matías",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 84000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Retamal",
+      "nombre": "Melani",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Riegelhaupt",
+      "nombre": "Guillermo",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Rochet",
+      "nombre": "Augusto",
+      "monto": 7000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 8800.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Rochet",
+      "nombre": "Julián",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Rossello",
+      "nombre": "Jorge",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Rossello",
+      "nombre": "Nelson",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 75000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Sánchez",
+      "nombre": "Eduardo (Cordobés)",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 78500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Sosa",
+      "nombre": "Juan Manuel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 15000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 60000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Torres",
+      "nombre": "Ariel (Pingüi)",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Torres",
+      "nombre": "Natacha",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 40000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 30000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 55000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Urrutia",
+      "nombre": "Ezequiel",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 32500.0
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 25000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 5000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 35000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 45000.0
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "apellido": "Vilas",
+      "nombre": "Colo",
+      "monto": 50000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "apellido": "Zágari",
+      "nombre": "Nicodemus",
+      "monto": 10000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "apellido": "Zágari",
+      "nombre": "Nicodemus",
+      "monto": 18000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "apellido": "Zágari",
+      "nombre": "Nicodemus",
+      "monto": 20000.0
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "apellido": "Zágari",
+      "nombre": "Nicodemus",
+      "monto": 50000.0
+    }
+  ]
+}

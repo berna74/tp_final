@@ -9,6 +9,9 @@
         <button class="btn-secondary" @click="$emit('show-resumen')">
           Ver deudas
         </button>
+        <button class="btn-secondary" @click="$emit('show-matriz')">
+          Ver últimos 12 meses
+        </button>
       </div>
     </div>
 
@@ -93,7 +96,7 @@ import { storeToRefs } from 'pinia'
 import { useCobrosStore } from '@/stores/cobros'
 import { useAuthStore } from '@/stores/auth'
 
-const emit = defineEmits(['show', 'edit', 'show-resumen', 'create-lote'])
+const emit = defineEmits(['show', 'edit', 'show-resumen', 'show-matriz', 'create-lote'])
 
 const cobrosStore = useCobrosStore()
 const authStore = useAuthStore()
