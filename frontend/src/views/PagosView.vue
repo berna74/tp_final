@@ -1,66 +1,41 @@
 <template>
   <div class="pagos-view">
-    <PagosCreate 
-      v-if="showCreate" 
-      @close="showCreate = false" 
-      @created="handleCreated" 
-    />
-    <PagosList 
-      @create="showCreate = true" 
-      @edit="handleEdit"
-      @show="handleShow"
-    />
-    <PagosUpdate 
-      v-if="showEdit && selectedPagoId" 
-      :pago-id="selectedPagoId"
-      @close="showEdit = false" 
-      @updated="handleUpdated" 
-    />
-    <PagosShow 
-      v-if="showView && selectedPagoId" 
-      :pago-id="selectedPagoId"
-      @close="showView = false" 
-    />
+    <div class="pagos-top-actions">
+      <RouterLink :to="{ name: 'pagos-ultimos-12' }" class="btn-tab">Ver últimos 12 meses</RouterLink>
+    </div>
 
-    <CobrosEnPagos />
+    <RouterView />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import PagosList from '@/components/pagos/PagosList.vue'
-import PagosCreate from '@/components/pagos/PagosCreate.vue'
-import PagosUpdate from '@/components/pagos/PagosUpdate.vue'
-import PagosShow from '@/components/pagos/PagosShow.vue'
-import CobrosEnPagos from '@/components/pagos/CobrosEnPagos.vue'
-
-const showCreate = ref(false)
-const showEdit = ref(false)
-const showView = ref(false)
-const selectedPagoId = ref<number | null>(null)
-
-function handleCreated() {
-  showCreate.value = false
-}
-
-function handleEdit(id: number) {
-  selectedPagoId.value = id
-  showEdit.value = true
-}
-
-function handleShow(id: number) {
-  selectedPagoId.value = id
-  showView.value = true
-}
-
-function handleUpdated() {
-  showEdit.value = false
-  selectedPagoId.value = null
-}
 </script>
 
 <style scoped>
 .pagos-view {
   padding: 20px;
+}
+
+.pagos-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-tab {
+  text-decoration: none;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #022f9d;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-tab.router-link-active {
+  background: #00cdff;
+  color: #001a57;
 }
 </style>

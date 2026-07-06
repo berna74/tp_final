@@ -9,13 +9,6 @@
     </div>
 
     <SociosCreate v-if="showCreateForm" @close="showCreateForm = false" @created="handleCreated" />
-    <SociosShow v-if="showViewForm && selectedSocio" :socio="selectedSocio" @close="closeViewForm" />
-    <SociosUpdate
-      v-if="showUpdateForm && selectedSocio"
-      :socio="selectedSocio"
-      @close="closeUpdateForm"
-      @updated="handleUpdated"
-    />
 
     <div v-if="loading" class="loading">Cargando socios...</div>
     <div v-else-if="error" class="error">{{ error }}</div>
@@ -91,17 +84,17 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useSociosStore } from '@/stores/socios'
 import { storeToRefs } from 'pinia'
 import SociosCreate from './SociosCreate.vue'
-import SociosUpdate from './SociosUpdate.vue'
-import SociosShow from './SociosShow.vue'
 import type { Socio } from '@/interfaces/Socio'
 import { useAuthStore } from '@/stores/auth'
 
 const sociosStore = useSociosStore()
 const authStore = useAuthStore()
+const router = useRouter()
 const { socios, loading, error, currentPage, totalPages } = storeToRefs(sociosStore)
 const puedeVerDni = computed(() => authStore.isAdmin || authStore.isSuperadmin)
 
@@ -122,9 +115,6 @@ const sociosOrdenados = computed(() => {
 })
 
 const showCreateForm = ref(false)
-const showUpdateForm = ref(false)
-const showViewForm = ref(false)
-const selectedSocio = ref<Socio | null>(null)
 
 onMounted(() => {
   sociosStore.fetchSocios()
@@ -142,8 +132,7 @@ function goToPage(page: number) {
 }
 
 function viewSocio(socio: Socio) {
-  selectedSocio.value = socio
-  showViewForm.value = true
+  router.push({ name: 'socios-show', params: { id: socio.id } })
 }
 
 function openUpdateForm(socio: Socio) {
@@ -151,22 +140,10 @@ function openUpdateForm(socio: Socio) {
     return
   }
 
-  selectedSocio.value = socio
-  showUpdateForm.value = true
-}
-
-function closeUpdateForm() {
-  showUpdateForm.value = false
-  selectedSocio.value = null
-}
-
-function closeViewForm() {
-  showViewForm.value = false
-  selectedSocio.value = null
+  router.push({ name: 'socios-edit', params: { id: socio.id } })
 }
 
 function handleUpdated() {
-  closeUpdateForm()
   sociosStore.fetchSocios(currentPage.value)
 }
 

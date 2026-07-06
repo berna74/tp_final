@@ -4,33 +4,33 @@
       <h3>Crear Nuevo Profesor</h3>
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
-          <label for="nombre">Nombre:</label>
+          <label for="nombre">Nombre:*</label>
           <input v-model="form.nombre" type="text" id="nombre" required />
         </div>
 
         <div class="form-group">
-          <label for="apellido">Apellido:</label>
+          <label for="apellido">Apellido:*</label>
           <input v-model="form.apellido" type="text" id="apellido" required />
         </div>
 
         <div class="form-group">
           <label for="dni">DNI:</label>
-          <input v-model="form.dni" type="text" id="dni" required />
+          <input v-model="form.dni" type="text" id="dni" />
         </div>
 
         <div class="form-group">
           <label for="horarios_clases">Horarios de clases:</label>
-          <input v-model="form.horarios_clases" type="text" id="horarios_clases" placeholder="Ej: Lunes y Miércoles 10-12hs" required />
+          <input v-model="form.horarios_clases" type="text" id="horarios_clases" placeholder="Ej: Lunes y Miércoles 10-12hs" />
         </div>
 
         <div class="form-group">
           <label for="telefono">Teléfono:</label>
-          <input v-model="form.telefono" type="tel" id="telefono" required />
+          <input v-model="form.telefono" type="tel" id="telefono" />
         </div>
 
         <div class="form-group">
           <label for="email">Email:</label>
-          <input v-model="form.email" type="email" id="email" required />
+          <input v-model="form.email" type="email" id="email" />
         </div>
 
         <div class="form-actions">

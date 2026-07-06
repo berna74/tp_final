@@ -9,7 +9,6 @@
     </div>
 
     <TurnosCreate v-if="showCreateForm" @close="showCreateForm = false" @created="handleCreated" />
-    <TurnosShow v-if="showingTurnoId" :id="showingTurnoId" @close="showingTurnoId = null" />
 
     <div v-if="loading" class="loading">Cargando turnos...</div>
     <div v-else-if="error" class="error">{{ error }}</div>
@@ -62,27 +61,24 @@
         </button>
       </div>
     </div>
-    <TurnosUpdate v-if="editingTurnoId" :id="editingTurnoId" @close="editingTurnoId = null" @updated="handleUpdated" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useTurnosStore } from '@/stores/turnos'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth'
 import TurnosCreate from './TurnosCreate.vue'
-import TurnosShow from './TurnosShow.vue'
-import TurnosUpdate from './TurnosUpdate.vue'
 
 const turnosStore = useTurnosStore()
 const authStore = useAuthStore()
+const router = useRouter()
 const { turnos, loading, error, currentPage, totalPages } = storeToRefs(turnosStore)
 
 const showCreateForm = ref(false)
-const showingTurnoId = ref<number | null>(null)
-const editingTurnoId = ref<number | null>(null)
 
 onMounted(() => {
   turnosStore.fetchTurnos()
@@ -94,7 +90,7 @@ function formatDate(dateString: string) {
 }
 
 function viewTurno(id: number) {
-  showingTurnoId.value = id
+  router.push({ name: 'turnos-show', params: { id } })
 }
 
 function editTurno(id: number) {
@@ -102,7 +98,7 @@ function editTurno(id: number) {
     return
   }
 
-  editingTurnoId.value = id
+  router.push({ name: 'turnos-edit', params: { id } })
 }
 
 function goToPage(page: number) {
@@ -131,7 +127,6 @@ function handleCreated() {
 }
 
 function handleUpdated() {
-  editingTurnoId.value = null
   turnosStore.fetchTurnos(currentPage.value)
 }
 </script>

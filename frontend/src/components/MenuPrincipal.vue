@@ -12,7 +12,7 @@
       <RouterLink :to="{ name: 'socios' }" @click="cerrarMenu">Socios</RouterLink>
       <RouterLink :to="{ name: 'alumnos' }" @click="cerrarMenu">Alumnos</RouterLink>
       <RouterLink :to="{ name: 'profesores' }" @click="cerrarMenu">Profesores</RouterLink>
-      <RouterLink :to="{ name: 'pagos' }" @click="cerrarMenu">Pagos</RouterLink>
+      <RouterLink :to="{ name: 'pagos-deudas' }" @click="cerrarMenu">Pagos</RouterLink>
       <RouterLink :to="{ name: 'cobros' }" @click="cerrarMenu">Cobros</RouterLink>
       <RouterLink :to="{ name: 'pelotitas' }" @click="cerrarMenu">Pelotitas</RouterLink>
       <RouterLink :to="{ name: 'ingresos-gastos' }" @click="cerrarMenu">Ingresos/Gastos</RouterLink>

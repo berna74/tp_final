@@ -9,7 +9,6 @@
     </div>
 
     <ProfesoresCreate v-if="showCreateForm" @close="showCreateForm = false" @created="handleCreated" />
-    <ProfesoresShow v-if="showingProfesorId" :id="showingProfesorId" @close="showingProfesorId = null" />
 
     <div v-if="loading" class="loading">Cargando profesores...</div>
     <div v-else-if="error" class="error">{{ error }}</div>
@@ -63,22 +62,21 @@
         </button>
       </div>
     </div>
-    <ProfesoresUpdate v-if="editingProfesorId" :id="editingProfesorId" @close="editingProfesorId = null" @updated="handleUpdated" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useProfesoresStore } from '@/stores/profesores'
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '@/stores/auth'
 import ProfesoresCreate from './ProfesoresCreate.vue'
-import ProfesoresShow from './ProfesoresShow.vue'
-import ProfesoresUpdate from './ProfesoresUpdate.vue'
 
 const profesoresStore = useProfesoresStore()
 const authStore = useAuthStore()
+const router = useRouter()
 const { profesores, loading, error, currentPage, totalPages } = storeToRefs(profesoresStore)
 
 const profesoresOrdenados = computed(() => {
@@ -98,15 +96,13 @@ const profesoresOrdenados = computed(() => {
 })
 
 const showCreateForm = ref(false)
-const showingProfesorId = ref<number | null>(null)
-const editingProfesorId = ref<number | null>(null)
 
 onMounted(() => {
   profesoresStore.fetchProfesores()
 })
 
 function viewProfesor(id: number) {
-  showingProfesorId.value = id
+  router.push({ name: 'profesores-show', params: { id } })
 }
 
 function editProfesor(id: number) {
@@ -114,7 +110,7 @@ function editProfesor(id: number) {
     return
   }
 
-  editingProfesorId.value = id
+  router.push({ name: 'profesores-edit', params: { id } })
 }
 
 function confirmDelete(id: number) {
@@ -139,7 +135,6 @@ function handleCreated() {
 }
 
 function handleUpdated() {
-  editingProfesorId.value = null
   profesoresStore.fetchProfesores(currentPage.value)
 }
 </script>

@@ -5,47 +5,31 @@
       @close="showCreatePanel = false"
       @saved="handleSaved"
     />
-    <PelotitasShow
-      v-if="showViewPanel && selectedId"
-      :pelotita-id="selectedId"
-      @close="showViewPanel = false"
-    />
     <PelotitasList
       @showCreate="showCreatePanel = true"
       @showEdit="handleEdit"
       @showView="handleView"
-    />
-    <PelotitasUpdate
-      v-if="showEditPanel && selectedId"
-      :pelotita-id="selectedId"
-      @close="showEditPanel = false"
-      @updated="handleUpdated"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PelotitasList from '@/components/pelotitas/PelotitasList.vue'
 import PelotitasCreate from '@/components/pelotitas/PelotitasCreate.vue'
-import PelotitasUpdate from '@/components/pelotitas/PelotitasUpdate.vue'
-import PelotitasShow from '@/components/pelotitas/PelotitasShow.vue'
 import { usePelotitasStore } from '@/stores/pelotitas'
 
 const pelotitasStore = usePelotitasStore()
 const showCreatePanel = ref(false)
-const showEditPanel = ref(false)
-const showViewPanel = ref(false)
-const selectedId = ref<number | null>(null)
+const router = useRouter()
 
 const handleEdit = (id: number) => {
-  selectedId.value = id
-  showEditPanel.value = true
+  router.push({ name: 'pelotitas-edit', params: { id } })
 }
 
 const handleView = (id: number) => {
-  selectedId.value = id
-  showViewPanel.value = true
+  router.push({ name: 'pelotitas-show', params: { id } })
 }
 
 const handleSaved = async () => {

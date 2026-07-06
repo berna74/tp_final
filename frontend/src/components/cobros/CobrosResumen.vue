@@ -2,7 +2,7 @@
   <div class="panel-wrapper">
     <div class="panel-content">
       <div class="resumen-header">
-        <h2>Ver deudas</h2>
+        <h2>{{ title }}</h2>
         <div class="anio-controls">
           <label>Año</label>
           <input type="number" v-model.number="anio" min="2020" max="2035" />
@@ -42,7 +42,7 @@
         </div>
       </template>
 
-      <div class="panel-actions">
+      <div v-if="showClose" class="panel-actions">
         <button @click="$emit('close')" class="btn-close">Cerrar</button>
       </div>
     </div>
@@ -54,6 +54,11 @@ import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useCobrosStore } from '@/stores/cobros'
 import type { CobroResumenMensual } from '@/interfaces/Cobro'
+
+withDefaults(defineProps<{ showClose?: boolean; title?: string }>(), {
+  showClose: true,
+  title: 'Ver deudas',
+})
 
 defineEmits(['close'])
 

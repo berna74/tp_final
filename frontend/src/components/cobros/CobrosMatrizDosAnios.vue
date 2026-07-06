@@ -7,7 +7,7 @@
           <button class="btn-export" @click="exportarPdf" :disabled="exportandoPdf || loading">
             {{ exportandoPdf ? 'Exportando...' : 'Exportar PDF' }}
           </button>
-          <button class="btn-close" @click="$emit('close')">Cerrar</button>
+          <button v-if="showClose" class="btn-close" @click="$emit('close')">Cerrar</button>
         </div>
       </div>
 
@@ -56,6 +56,10 @@ import { useCobrosStore } from '@/stores/cobros'
 import ApiService from '@/services/ApiService'
 import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
+
+withDefaults(defineProps<{ showClose?: boolean }>(), {
+  showClose: true,
+})
 
 defineEmits(['close'])
 
