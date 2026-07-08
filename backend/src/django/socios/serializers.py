@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Cobro, Pago, Socio
+from .models import Cobro, MovimientoFinanciero, Pago, Socio
 from .roles import ROLE_ADMIN, ROLE_SUPERADMIN, resolver_rol_usuario
 
 
@@ -213,6 +213,44 @@ class PagoSerializer(serializers.ModelSerializer):
 
 class PagosPaginatedResponseSerializer(serializers.Serializer):
     items = PagoSerializer(many=True)
+    total_pages = serializers.IntegerField(min_value=1)
+    total_count = serializers.IntegerField(min_value=0)
+    page_size = serializers.IntegerField(min_value=1)
+
+
+class MovimientoFinancieroSerializer(serializers.ModelSerializer):
+    mes = serializers.SerializerMethodField()
+    anio = serializers.SerializerMethodField()
+
+    class Meta:
+        model = MovimientoFinanciero
+        fields = [
+            "id",
+            "tipo",
+            "fecha",
+            "mes",
+            "anio",
+            "grupo",
+            "rubro",
+            "concepto",
+            "monto",
+            "metodo",
+            "observaciones",
+        ]
+        extra_kwargs = {
+            "metodo": {"required": False, "allow_blank": True},
+            "observaciones": {"required": False, "allow_blank": True},
+        }
+
+    def get_mes(self, obj):
+        return obj.fecha.month
+
+    def get_anio(self, obj):
+        return obj.fecha.year
+
+
+class MovimientosFinancierosPaginatedResponseSerializer(serializers.Serializer):
+    items = MovimientoFinancieroSerializer(many=True)
     total_pages = serializers.IntegerField(min_value=1)
     total_count = serializers.IntegerField(min_value=0)
     page_size = serializers.IntegerField(min_value=1)

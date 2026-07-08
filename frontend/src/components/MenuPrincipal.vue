@@ -15,7 +15,8 @@
       <RouterLink :to="{ name: 'pagos-deudas' }" @click="cerrarMenu">Pagos</RouterLink>
       <RouterLink :to="{ name: 'cobros' }" @click="cerrarMenu">Cobros</RouterLink>
       <RouterLink :to="{ name: 'pelotitas' }" @click="cerrarMenu">Pelotitas</RouterLink>
-      <RouterLink :to="{ name: 'ingresos-gastos' }" @click="cerrarMenu">Ingresos/Gastos</RouterLink>
+      <RouterLink :to="{ name: 'ingresos' }" @click="cerrarMenu">Ingresos</RouterLink>
+      <RouterLink :to="{ name: 'gastos' }" @click="cerrarMenu">Gastos</RouterLink>
       <EnlacesRedesSociales class="social-links-container" />
       <RouterLink
         v-if="!authStore.estaAutenticado"

@@ -4,15 +4,17 @@ from decimal import Decimal
 from django.contrib.auth.models import Group, User
 from django.core.paginator import EmptyPage, Paginator
 from django.db import DatabaseError, IntegrityError
+from django.db.models import Q
 from django.http import Http404
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import Cobro, Pago, Socio
+from .models import Cobro, MovimientoFinanciero, Pago, Socio
 from .serializers import (
     CobroLoteSerializer,
     CobroSerializer,
     CobrosResumenQuerySerializer,
+    MovimientoFinancieroSerializer,
     PagoSerializer,
     SocioSerializer,
 )
@@ -750,3 +752,119 @@ class PagoDetail(generics.RetrieveUpdateDestroyAPIView):
 
         self.perform_destroy(pago)
         return Response({"mensaje": "Pago eliminado"})
+
+
+class MovimientoFinancieroList(generics.ListCreateAPIView):
+    serializer_class = MovimientoFinancieroSerializer
+
+    def get_queryset(self):
+        queryset = MovimientoFinanciero.objects.all()
+        tipo = self.request.query_params.get("tipo")
+        busqueda = self.request.query_params.get("q", "").strip()
+        grupo = self.request.query_params.get("grupo", "").strip()
+
+        if tipo in {MovimientoFinanciero.TIPO_INGRESO, MovimientoFinanciero.TIPO_GASTO}:
+            queryset = queryset.filter(tipo=tipo)
+        if grupo:
+            queryset = queryset.filter(grupo__iexact=grupo)
+        if busqueda:
+            queryset = queryset.filter(
+                Q(rubro__icontains=busqueda)
+                | Q(concepto__icontains=busqueda)
+                | Q(observaciones__icontains=busqueda)
+            )
+        return queryset.order_by("-fecha", "-id")
+
+    def list(self, request, *args, **kwargs):
+        try:
+            queryset = self.filter_queryset(self.get_queryset())
+            page_size = request.query_params.get("page_size", 10)
+            try:
+                page_size = max(1, min(int(page_size), 100))
+            except (TypeError, ValueError):
+                page_size = 10
+
+            paginator = Paginator(queryset, page_size)
+            page_number = request.query_params.get("page", 1)
+
+            try:
+                page_obj = paginator.page(page_number)
+            except EmptyPage:
+                page_obj = paginator.page(paginator.num_pages if paginator.num_pages else 1)
+
+            serializer = self.get_serializer(page_obj.object_list, many=True)
+            return Response(
+                {
+                    "items": serializer.data,
+                    "total_pages": paginator.num_pages if paginator.num_pages else 1,
+                    "total_count": paginator.count,
+                    "page_size": paginator.per_page,
+                }
+            )
+        except DatabaseError:
+            return Response({"items": [], "total_pages": 1, "total_count": 0, "page_size": 10})
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            self.perform_create(serializer)
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class MovimientoFinancieroDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MovimientoFinanciero.objects.all()
+    serializer_class = MovimientoFinancieroSerializer
+
+    def _get_object_or_none(self):
+        try:
+            return self.get_object()
+        except Http404:
+            return None
+
+    def put(self, request, *args, **kwargs):
+        kwargs["partial"] = True
+        return self.update(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        movimiento = self._get_object_or_none()
+        if movimiento is None:
+            return Response({"mensaje": "Movimiento no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+        return Response(self.get_serializer(movimiento).data)
+
+    def update(self, request, *args, **kwargs):
+        movimiento = self._get_object_or_none()
+        if movimiento is None:
+            return Response({"mensaje": "Movimiento no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        partial = kwargs.pop("partial", False)
+        serializer = self.get_serializer(movimiento, data=request.data, partial=partial)
+        if not serializer.is_valid():
+            return Response(
+                validation_error_payload(serializer),
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            self.perform_update(serializer)
+        except IntegrityError as exc:
+            return Response({"mensaje": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+        movimiento = self._get_object_or_none()
+        if movimiento is None:
+            return Response({"mensaje": "Movimiento no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+        self.perform_destroy(movimiento)
+        return Response({"mensaje": "Movimiento eliminado"})

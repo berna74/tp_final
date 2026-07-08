@@ -3,7 +3,7 @@
     <h1>SiPePa - Pelota a Paleta - Club Sol de Mayo</h1>
     <p>
       Bienvenido al <b>Si</b>stema de administración de <b>Pe</b>lota a <b>Pa</b>leta del Club Sol de Mayo.<br>
-      Aquí podrás gestionar socios, turnos, profesores y categorías desde un solo lugar.
+      Aquí podras gestionar socios, profesores, categorias, ingresos y gastos desde un solo lugar.
     </p>
     <div class="home-grid">
       <router-link to="/socios" class="home-card">
@@ -36,10 +36,15 @@
         <strong>Pelotitas</strong>
         <small>Compra y venta de pelotitas</small>
       </router-link>
-      <router-link to="/ingresos-gastos" class="home-card">
-        <Icon icon="mdi:cash-check" width="40" height="40" />
-        <strong>Ingresos/Gastos</strong>
-        <small>Control de ingresos y gastos</small>
+      <router-link to="/ingresos" class="home-card">
+        <Icon icon="mdi:cash-plus" width="40" height="40" />
+        <strong>Ingresos</strong>
+        <small>Registro de ingresos del club</small>
+      </router-link>
+      <router-link to="/gastos" class="home-card">
+        <Icon icon="mdi:cash-minus" width="40" height="40" />
+        <strong>Gastos</strong>
+        <small>Registro de gastos del club</small>
       </router-link>
     </div>
     <footer class="home-footer">

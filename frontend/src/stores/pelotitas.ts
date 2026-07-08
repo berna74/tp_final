@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Pelotita, ResumenPelotitas } from '@/interfaces/Pelotita'
+import type { MovimientoFinanciero } from '@/interfaces/MovimientoFinanciero'
 import ApiService from '@/services/ApiService'
 
 export const usePelotitasStore = defineStore('pelotitas', () => {
@@ -13,6 +14,10 @@ export const usePelotitasStore = defineStore('pelotitas', () => {
   const totalPages = ref(1)
   const totalCount = ref(0)
   const pageSize = ref(10)
+  const ingresosFinancieros = ref<MovimientoFinanciero[]>([])
+  const gastosFinancieros = ref<MovimientoFinanciero[]>([])
+  const totalIngresosFinancieros = ref(0)
+  const totalGastosFinancieros = ref(0)
 
   const fetchPelotitas = async (page: number = 1) => {
     loading.value = true
@@ -105,6 +110,34 @@ export const usePelotitasStore = defineStore('pelotitas', () => {
     }
   }
 
+  const fetchFinanzasRelacionadas = async () => {
+    loading.value = true
+    error.value = null
+    try {
+      const [ingresosResponse, gastosResponse] = await Promise.all([
+        ApiService.get('/movimientos-financieros/?tipo=ingreso&q=pelotitas&page=1&page_size=100'),
+        ApiService.get('/movimientos-financieros/?tipo=gasto&q=pelotitas&page=1&page_size=100'),
+      ])
+
+      ingresosFinancieros.value = ingresosResponse.data.items || []
+      gastosFinancieros.value = gastosResponse.data.items || []
+
+      totalIngresosFinancieros.value = ingresosFinancieros.value.reduce(
+        (acumulado, item) => acumulado + Number(item.monto || 0),
+        0,
+      )
+      totalGastosFinancieros.value = gastosFinancieros.value.reduce(
+        (acumulado, item) => acumulado + Number(item.monto || 0),
+        0,
+      )
+    } catch (err: any) {
+      error.value = err.message || 'Error al cargar finanzas relacionadas a pelotitas'
+      console.error('Error fetching finanzas relacionadas:', err)
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     pelotitas,
     pelotita,
@@ -115,11 +148,16 @@ export const usePelotitasStore = defineStore('pelotitas', () => {
     totalPages,
     totalCount,
     pageSize,
+    ingresosFinancieros,
+    gastosFinancieros,
+    totalIngresosFinancieros,
+    totalGastosFinancieros,
     fetchPelotitas,
     fetchPelotita,
     createPelotita,
     updatePelotita,
     deletePelotita,
-    fetchResumen
+    fetchResumen,
+    fetchFinanzasRelacionadas,
   }
 })

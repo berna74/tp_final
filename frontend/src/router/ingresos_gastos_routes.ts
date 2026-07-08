@@ -1,10 +1,18 @@
 import type { RouteRecordRaw } from 'vue-router'
+import IngresosView from '@/views/IngresosView.vue'
+import GastosView from '@/views/GastosView.vue'
 
 const ingresos_gastos_routes: RouteRecordRaw[] = [
   {
-    path: '/ingresos-gastos',
-    name: 'ingresos-gastos',
-    component: { template: '<div style="padding: 2rem; text-align: center;"><h2>Ingresos y Gastos</h2><p style="color: #666; font-size: 1.1rem;">Próximamente...</p></div>' },
+    path: '/ingresos',
+    name: 'ingresos',
+    component: IngresosView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/gastos',
+    name: 'gastos',
+    component: GastosView,
     meta: { requiresAuth: true }
   }
 ]

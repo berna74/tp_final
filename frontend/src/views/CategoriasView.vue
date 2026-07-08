@@ -1,7 +1,9 @@
 
 <template>
   <div class="container">
-    <h4>Categorías</h4>
+    <header class="view-header">
+      <h1>Categorías</h1>
+    </header>
     <RouterView />
   </div>
 </template>
@@ -19,11 +21,19 @@ onMounted(() => {
 
 <style scoped>
 .container {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 2rem;
+  padding: 20px;
+}
+
+.view-header {
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0;
+  color: #022F9D;
 }
 </style>

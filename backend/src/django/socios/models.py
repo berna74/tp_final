@@ -90,3 +90,29 @@ class Pago(models.Model):
 
     def __str__(self):
         return f"Pago {self.id} - {self.tipo} {self.mes}/{self.anio}"
+
+
+class MovimientoFinanciero(models.Model):
+    TIPO_INGRESO = "ingreso"
+    TIPO_GASTO = "gasto"
+    TIPOS_MOVIMIENTO = [
+        (TIPO_INGRESO, "Ingreso"),
+        (TIPO_GASTO, "Gasto"),
+    ]
+
+    tipo = models.CharField(max_length=20, choices=TIPOS_MOVIMIENTO)
+    fecha = models.DateField()
+    grupo = models.CharField(max_length=80)
+    rubro = models.CharField(max_length=120)
+    concepto = models.CharField(max_length=150)
+    monto = models.DecimalField(max_digits=12, decimal_places=2)
+    metodo = models.CharField(max_length=50, blank=True, default="")
+    observaciones = models.TextField(blank=True, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "MOVIMIENTOS_FINANCIEROS"
+        ordering = ["-fecha", "-id"]
+
+    def __str__(self):
+        return f"{self.tipo} {self.rubro} {self.fecha}"

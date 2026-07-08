@@ -8,6 +8,8 @@ from .views import (
     CobroLoteCreate,
     CobroMatrizDosAnios,
     CobroResumenAnual,
+    MovimientoFinancieroDetail,
+    MovimientoFinancieroList,
     PagoDetail,
     PagoList,
     SocioDetail,
@@ -27,4 +29,6 @@ urlpatterns = [
     re_path(r"^cobros/(?P<pk>\d+)/?$", CobroDetail.as_view()),
     re_path(r"^pagos/?$", PagoList.as_view()),
     re_path(r"^pagos/(?P<pk>\d+)/?$", PagoDetail.as_view()),
+    re_path(r"^movimientos-financieros/?$", MovimientoFinancieroList.as_view()),
+    re_path(r"^movimientos-financieros/(?P<pk>\d+)/?$", MovimientoFinancieroDetail.as_view()),
 ]
